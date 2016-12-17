@@ -1,0 +1,182 @@
+<?php
+
+/*
+ * This file is part of Laravel Ownership.
+ *
+ * (c) CyberCog <support@cybercog.su>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Cog\Ownership\Tests\Unit\Traits;
+
+use Cog\Ownership\Observers\ModelObserver;
+use Cog\Ownership\Tests\Stubs\Models\Character;
+use Cog\Ownership\Tests\Stubs\Models\User;
+use Cog\Ownership\Tests\TestCase;
+use Cog\Ownership\Tests\Stubs\Models\EntityWithMorphOwner;
+
+/**
+ * Class HasMorphOwnerTest.
+ *
+ * @package Cog\Ownership\Tests\Unit\Traits
+ */
+class HasMorphOwnerTest extends TestCase
+{
+    /**
+     * Boot the HasOwner trait for a model.
+     *
+     * @return void
+     */
+    public static function bootHasOwner()
+    {
+        static::observe(new ModelObserver);
+    }
+
+    /** @test */
+    public function it_can_belong_to_owner()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+
+        $this->assertInstanceOf(Character::class, $entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_can_get_owner()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+
+        $this->assertInstanceOf(Character::class, $entity->getOwner());
+    }
+
+    /** @test */
+    public function it_can_change_owner()
+    {
+        $character = factory(Character::class)->create();
+        $newUser = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+        $entity->changeOwnerTo($newUser);
+
+        $this->assertEquals($newUser->getKey(), $entity->getOwner()->getKey());
+    }
+
+    /** @test */
+    public function it_can_abandon_owner()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+        $this->assertInstanceOf(Character::class, $entity->getOwner());
+
+        $entity->abandonOwner();
+
+        $this->assertNull($entity->getOwner());
+    }
+
+    /** @test */
+    public function it_can_check_if_has_owner()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+
+        $this->assertTrue($entity->hasOwner());
+    }
+
+    /** @test */
+    public function it_can_check_if_dont_have_owner()
+    {
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ]);
+
+        $this->assertFalse($entity->hasOwner());
+    }
+
+    /** @test */
+    public function it_can_check_if_owned_by()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+
+        $this->assertTrue($entity->isOwnedBy($character));
+    }
+
+    /** @test */
+    public function it_can_check_if_not_owned_by()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+        $notOwnerUser = factory(Character::class)->create();
+
+        $this->assertFalse($entity->isOwnedBy($notOwnerUser));
+    }
+
+    /** @test */
+    public function it_can_scope_models_by_owner()
+    {
+        $character = factory(Character::class)->create();
+        factory(EntityWithMorphOwner::class, 4)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+        $user = factory(User::class)->create();
+        factory(EntityWithMorphOwner::class, 3)->create([
+            'owned_by_id' => $user->getKey(),
+            'owned_by_type' => $user->getMorphClass(),
+        ]);
+
+        $this->assertCount(4, EntityWithMorphOwner::whereOwnedBy($character)->get());
+    }
+
+    /** @test */
+    public function it_can_set_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithMorphOwner::class)->make([
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ]);
+        $entity->setDefaultOwnerOnCreate = true;
+        $entity->save();
+
+        $this->assertInstanceOf(User::class, $entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_cannot_set_default_owner_on_create_for_guest()
+    {
+        $entity = factory(EntityWithMorphOwner::class)->make([
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ]);
+        $entity->setDefaultOwnerOnCreate = true;
+        $entity->save();
+
+        $this->assertNull($entity->ownedBy);
+    }
+}
