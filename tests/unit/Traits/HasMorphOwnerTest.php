@@ -11,10 +11,10 @@
 
 namespace Cog\Ownership\Tests\Unit\Traits;
 
-use Cog\Ownership\Observers\ModelObserver;
-use Cog\Ownership\Tests\Stubs\Models\Character;
-use Cog\Ownership\Tests\Stubs\Models\User;
 use Cog\Ownership\Tests\TestCase;
+use Cog\Ownership\Observers\ModelObserver;
+use Cog\Ownership\Tests\Stubs\Models\User;
+use Cog\Ownership\Tests\Stubs\Models\Character;
 use Cog\Ownership\Tests\Stubs\Models\EntityWithMorphOwner;
 
 /**

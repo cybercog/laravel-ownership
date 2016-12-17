@@ -11,10 +11,10 @@
 
 namespace Cog\Ownership\Tests;
 
-use Cog\Ownership\Tests\Stubs\Models\Character;
 use Cog\Ownership\Tests\Stubs\Models\User;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Cog\Ownership\Tests\Stubs\Models\Character;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**
  * Class TestCase.

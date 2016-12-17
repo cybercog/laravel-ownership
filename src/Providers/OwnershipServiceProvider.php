@@ -11,8 +11,8 @@
 
 namespace Cog\Ownership\Providers;
 
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 use Illuminate\Support\ServiceProvider;
+use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class OwnershipServiceProvider.

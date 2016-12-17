@@ -11,8 +11,8 @@
 
 namespace Cog\Ownership\Observers;
 
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 use Illuminate\Support\Facades\Auth;
+use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 
 /**
  * Class ModelObserver.

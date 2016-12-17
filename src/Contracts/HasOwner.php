@@ -11,8 +11,8 @@
 
 namespace Cog\Ownership\Contracts;
 
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 use Illuminate\Database\Eloquent\Builder;
+use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Interface HasOwner.

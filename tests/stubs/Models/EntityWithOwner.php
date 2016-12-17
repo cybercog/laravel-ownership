@@ -11,9 +11,9 @@
 
 namespace Cog\Ownership\Tests\Stubs\Models;
 
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 use Cog\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
+use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 
 /**
  * Class EntityWithOwner.

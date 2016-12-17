@@ -11,10 +11,10 @@
 
 namespace Cog\Ownership\Traits;
 
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
-use Cog\Ownership\Exceptions\InvalidOwnerType;
-use Cog\Ownership\Observers\ModelObserver;
 use Illuminate\Database\Eloquent\Builder;
+use Cog\Ownership\Observers\ModelObserver;
+use Cog\Ownership\Exceptions\InvalidOwnerType;
+use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class HasOwner.

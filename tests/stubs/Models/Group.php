@@ -11,8 +11,8 @@
 
 namespace Cog\Ownership\Tests\Stubs\Models;
 
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 use Illuminate\Database\Eloquent\Model;
+use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class Group.

@@ -11,9 +11,9 @@
 
 namespace Cog\Ownership\Exceptions;
 
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
-use Cog\Ownership\Contracts\HasOwner;
 use Exception;
+use Cog\Ownership\Contracts\HasOwner;
+use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 
 class InvalidOwnerType extends Exception
 {
