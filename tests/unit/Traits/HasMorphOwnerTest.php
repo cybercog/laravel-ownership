@@ -16,6 +16,7 @@ use Cog\Ownership\Observers\ModelObserver;
 use Cog\Ownership\Tests\Stubs\Models\User;
 use Cog\Ownership\Tests\Stubs\Models\Character;
 use Cog\Ownership\Tests\Stubs\Models\EntityWithMorphOwner;
+use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultMorphOwner;
 
 /**
  * Class HasMorphOwnerTest.
@@ -153,15 +154,31 @@ class HasMorphOwnerTest extends TestCase
     }
 
     /** @test */
+    public function it_can_scope_models_not_owned_by_owner()
+    {
+        $character = factory(Character::class)->create();
+        factory(EntityWithMorphOwner::class, 4)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+        $user = factory(User::class)->create();
+        factory(EntityWithMorphOwner::class, 3)->create([
+            'owned_by_id' => $user->getKey(),
+            'owned_by_type' => $user->getMorphClass(),
+        ]);
+
+        $this->assertCount(3, EntityWithMorphOwner::whereNotOwnedBy($character)->get());
+    }
+
+    /** @test */
     public function it_can_set_default_owner_on_create()
     {
         $user = factory(User::class)->create();
         $this->actingAs($user);
-        $entity = factory(EntityWithMorphOwner::class)->make([
+        $entity = factory(EntityWithDefaultMorphOwner::class)->make([
             'owned_by_id' => null,
             'owned_by_type' => null,
         ]);
-        $entity->setDefaultOwnerOnCreate = true;
         $entity->save();
 
         $this->assertInstanceOf(User::class, $entity->ownedBy);
@@ -170,12 +187,71 @@ class HasMorphOwnerTest extends TestCase
     /** @test */
     public function it_cannot_set_default_owner_on_create_for_guest()
     {
+        $entity = factory(EntityWithDefaultMorphOwner::class)->make([
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ]);
+        $entity->save();
+
+        $this->assertNull($entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_can_manually_set_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
         $entity = factory(EntityWithMorphOwner::class)->make([
             'owned_by_id' => null,
             'owned_by_type' => null,
         ]);
-        $entity->setDefaultOwnerOnCreate = true;
-        $entity->save();
+        $entity->withDefaultOwner()->save();
+
+        $this->assertInstanceOf(User::class, $entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_can_manually_set_custom_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $character = factory(Character::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithMorphOwner::class)->make([
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ]);
+        $entity->withDefaultOwner($character)->save();
+
+        $this->assertInstanceOf(Character::class, $entity->ownedBy);
+        $this->assertEquals($character->getKey(), $entity->ownedBy->getKey());
+    }
+
+    /** @test */
+    public function it_can_manually_override_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $character = factory(Character::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithDefaultMorphOwner::class)->make([
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ]);
+        $entity->withDefaultOwner($character)->save();
+
+        $this->assertInstanceOf(Character::class, $entity->ownedBy);
+        $this->assertEquals($character->getKey(), $entity->ownedBy->getKey());
+    }
+
+    /** @test */
+    public function it_can_manually_unset_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithDefaultMorphOwner::class)->make([
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ]);
+        $entity->withoutDefaultOwner()->save();
 
         $this->assertNull($entity->ownedBy);
     }

@@ -16,6 +16,7 @@ use Cog\Ownership\Tests\Stubs\Models\User;
 use Cog\Ownership\Tests\Stubs\Models\Group;
 use Cog\Ownership\Exceptions\InvalidOwnerType;
 use Cog\Ownership\Tests\Stubs\Models\EntityWithCustomizedOwner;
+use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultCustomizedOwner;
 
 /**
  * Class HasCustomizedOwnerTest.
@@ -133,18 +134,89 @@ class HasCustomizedOwnerTest extends TestCase
     }
 
     /** @test */
+    public function it_can_scope_models_not_owned_by_owner()
+    {
+        $group1 = factory(Group::class)->create();
+        factory(EntityWithCustomizedOwner::class, 4)->create([
+            'group_id' => $group1->getKey(),
+        ]);
+        $group2 = factory(Group::class)->create();
+        factory(EntityWithCustomizedOwner::class, 3)->create([
+            'group_id' => $group2->getKey(),
+        ]);
+
+        $this->assertCount(3, EntityWithCustomizedOwner::whereNotOwnedBy($group1)->get());
+    }
+
+    /** @test */
     public function it_can_set_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithDefaultCustomizedOwner::class)->make([
+            'group_id' => null,
+        ]);
+        $entity->save();
+
+        $this->assertInstanceOf(Group::class, $entity->ownedBy);
+        $this->assertEquals('default-group-owner', $entity->ownedBy->name);
+    }
+
+    /** @test */
+    public function it_can_manually_set_default_owner_on_create()
     {
         $user = factory(User::class)->create();
         $this->actingAs($user);
         $entity = factory(EntityWithCustomizedOwner::class)->make([
             'group_id' => null,
         ]);
-        $entity->setDefaultOwnerOnCreate = true;
-        $entity->save();
+        $entity->withDefaultOwner()->save();
 
         $this->assertInstanceOf(Group::class, $entity->ownedBy);
         $this->assertEquals('default-group-owner', $entity->ownedBy->name);
+    }
+
+    /** @test */
+    public function it_can_manually_set_custom_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $group = factory(Group::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithCustomizedOwner::class)->make([
+            'group_id' => null,
+        ]);
+        $entity->withDefaultOwner($group)->save();
+
+        $this->assertInstanceOf(Group::class, $entity->ownedBy);
+        $this->assertEquals($group->getKey(), $entity->ownedBy->getKey());
+    }
+
+    /** @test */
+    public function it_can_manually_override_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $group = factory(Group::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithDefaultCustomizedOwner::class)->make([
+            'group_id' => null,
+        ]);
+        $entity->withDefaultOwner($group)->save();
+
+        $this->assertInstanceOf(Group::class, $entity->ownedBy);
+        $this->assertEquals($group->getKey(), $entity->ownedBy->getKey());
+    }
+
+    /** @test */
+    public function it_can_manually_unset_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithDefaultCustomizedOwner::class)->make([
+            'group_id' => null,
+        ]);
+        $entity->withoutDefaultOwner()->save();
+
+        $this->assertNull($entity->ownedBy);
     }
 
     /** @test */

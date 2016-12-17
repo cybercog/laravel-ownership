@@ -11,6 +11,7 @@
 
 namespace Cog\Ownership\Traits;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Cog\Ownership\Observers\ModelObserver;
 use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
@@ -23,11 +24,9 @@ use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 trait HasMorphOwner
 {
     /**
-     * Set owner on model create (authenticated user by default).
-     *
-     * @var bool
+     * @var \Cog\Ownership\Contracts\CanBeOwner|null
      */
-    public $setDefaultOwnerOnCreate = false;
+    private $defaultOwner;
 
     /**
      * Boot the HasMorphOwner trait for a model.
@@ -42,7 +41,7 @@ trait HasMorphOwner
     /**
      * Owner of the model.
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function ownedBy()
     {
@@ -57,6 +56,67 @@ trait HasMorphOwner
     public function getOwner()
     {
         return $this->ownedBy;
+    }
+
+    /**
+     * Get default owner.
+     *
+     * @return \Cog\Ownership\Contracts\CanBeOwner|null
+     */
+    public function defaultOwner()
+    {
+        return $this->defaultOwner;
+    }
+
+    /**
+     * Set owner as default for entity.
+     *
+     * @param \Cog\Ownership\Contracts\CanBeOwner|null $owner
+     * @return $this
+     */
+    public function withDefaultOwner(CanBeOwnerContract $owner = null)
+    {
+        $this->defaultOwner = $owner ?: $this->resolveDefaultOwner();
+        if (isset($this->withDefaultOwnerOnCreate)) {
+            $this->withDefaultOwnerOnCreate = false;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove default owner for entity.
+     *
+     * @return $this
+     */
+    public function withoutDefaultOwner()
+    {
+        $this->defaultOwner = null;
+        if (isset($this->withDefaultOwnerOnCreate)) {
+            $this->withDefaultOwnerOnCreate = false;
+        }
+
+        return $this;
+    }
+
+    /**
+     * If default owner should be set on entity create.
+     *
+     * @return bool
+     */
+    public function isDefaultOwnerOnCreateRequired()
+    {
+        return isset($this->withDefaultOwnerOnCreate) ? (bool) $this->withDefaultOwnerOnCreate : false;
+    }
+
+    /**
+     * Resolve entity default owner.
+     *
+     * @return \Cog\Ownership\Contracts\CanBeOwner|null
+     */
+    public function resolveDefaultOwner()
+    {
+        return Auth::user();
     }
 
     /**
@@ -121,5 +181,20 @@ trait HasMorphOwner
             'owned_by_id' => $owner->getKey(),
             'owned_by_type' => $owner->getMorphClass(),
         ]);
+    }
+
+    /**
+     * Scope a query to only include models by owner.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Cog\Ownership\Contracts\CanBeOwner $owner
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWhereNotOwnedBy(Builder $query, CanBeOwnerContract $owner)
+    {
+        return $query->where(function (Builder $q) use ($owner) {
+            $q->where('owned_by_id', '!=', $owner->getKey())
+                ->orWhere('owned_by_type', '!=', $owner->getMorphClass());
+        });
     }
 }

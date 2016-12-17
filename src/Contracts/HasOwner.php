@@ -36,6 +36,42 @@ interface HasOwner
     public function getOwner();
 
     /**
+     * Get default owner.
+     *
+     * @return \Cog\Ownership\Contracts\CanBeOwner|null
+     */
+    public function defaultOwner();
+
+    /**
+     * Set owner as default for entity.
+     *
+     * @param \Cog\Ownership\Contracts\CanBeOwner|null $owner
+     * @return $this
+     */
+    public function withDefaultOwner(CanBeOwnerContract $owner = null);
+
+    /**
+     * Remove default owner for entity.
+     *
+     * @return $this
+     */
+    public function withoutDefaultOwner();
+
+    /**
+     * If default owner should be set on entity create.
+     *
+     * @return bool
+     */
+    public function isDefaultOwnerOnCreateRequired();
+
+    /**
+     * Resolve entity default owner.
+     *
+     * @return \Cog\Ownership\Contracts\CanBeOwner|null
+     */
+    public function resolveDefaultOwner();
+
+    /**
      * Changes owner of the model.
      *
      * @param \Cog\Ownership\Contracts\CanBeOwner $owner
@@ -73,4 +109,13 @@ interface HasOwner
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereOwnedBy(Builder $query, CanBeOwnerContract $owner);
+
+    /**
+     * Scope a query to only include models by owner.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Cog\Ownership\Contracts\CanBeOwner $owner
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWhereNotOwnedBy(Builder $query, CanBeOwnerContract $owner);
 }

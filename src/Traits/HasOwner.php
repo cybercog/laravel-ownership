@@ -11,6 +11,7 @@
 
 namespace Cog\Ownership\Traits;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Cog\Ownership\Observers\ModelObserver;
 use Cog\Ownership\Exceptions\InvalidOwnerType;
@@ -24,11 +25,9 @@ use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 trait HasOwner
 {
     /**
-     * Set owner on model create (authenticated user by default).
-     *
-     * @var bool
+     * @var \Cog\Ownership\Contracts\CanBeOwner|null
      */
-    public $setDefaultOwnerOnCreate = false;
+    private $defaultOwner;
 
     /**
      * Boot the HasOwner trait for a model.
@@ -58,6 +57,67 @@ trait HasOwner
     public function getOwner()
     {
         return $this->ownedBy;
+    }
+
+    /**
+     * Get default owner.
+     *
+     * @return \Cog\Ownership\Contracts\CanBeOwner|null
+     */
+    public function defaultOwner()
+    {
+        return $this->defaultOwner;
+    }
+
+    /**
+     * Set owner as default for entity.
+     *
+     * @param \Cog\Ownership\Contracts\CanBeOwner|null $owner
+     * @return $this
+     */
+    public function withDefaultOwner(CanBeOwnerContract $owner = null)
+    {
+        $this->defaultOwner = $owner ?: $this->resolveDefaultOwner();
+        if (isset($this->withDefaultOwnerOnCreate)) {
+            $this->withDefaultOwnerOnCreate = false;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove default owner for entity.
+     *
+     * @return $this
+     */
+    public function withoutDefaultOwner()
+    {
+        $this->defaultOwner = null;
+        if (isset($this->withDefaultOwnerOnCreate)) {
+            $this->withDefaultOwnerOnCreate = false;
+        }
+
+        return $this;
+    }
+
+    /**
+     * If default owner should be set on entity create.
+     *
+     * @return bool
+     */
+    public function isDefaultOwnerOnCreateRequired()
+    {
+        return isset($this->withDefaultOwnerOnCreate) ? (bool) $this->withDefaultOwnerOnCreate : false;
+    }
+
+    /**
+     * Resolve entity default owner.
+     *
+     * @return \Cog\Ownership\Contracts\CanBeOwner|null
+     */
+    public function resolveDefaultOwner()
+    {
+        return Auth::user();
     }
 
     /**
@@ -126,11 +186,23 @@ trait HasOwner
     }
 
     /**
+     * Scope a query to exclude models by owner.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Cog\Ownership\Contracts\CanBeOwner $owner
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWhereNotOwnedBy(Builder $query, CanBeOwnerContract $owner)
+    {
+        return $query->where($this->getOwnerForeignKey(), '!=', $owner->getKey());
+    }
+
+    /**
      * Get owner model name.
      *
      * @return string
      */
-    public function getOwnerModel()
+    protected function getOwnerModel()
     {
         return $this->ownerModel ?: app(CanBeOwnerContract::class);
     }

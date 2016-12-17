@@ -16,13 +16,15 @@ use Illuminate\Database\Eloquent\Model;
 use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 
 /**
- * Class EntityWithCustomizedOwner.
+ * Class EntityWithDefaultCustomizedOwner.
  *
  * @package Cog\Ownership\Tests\Stubs\Models
  */
-class EntityWithCustomizedOwner extends Model implements HasOwnerContract
+class EntityWithDefaultCustomizedOwner extends Model implements HasOwnerContract
 {
     use HasOwner;
+
+    protected $withDefaultOwnerOnCreate = true;
 
     /**
      * Owner model name.
