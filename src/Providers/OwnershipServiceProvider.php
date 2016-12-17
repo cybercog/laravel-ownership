@@ -26,7 +26,7 @@ class OwnershipServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected $defer = true;
 
     /**
      * Register the service provider.
@@ -50,5 +50,17 @@ class OwnershipServiceProvider extends ServiceProvider
 
             return $config->get('auth.providers.users.model', $config->get('auth.model'));
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [
+            CanBeOwnerContract::class,
+        ];
     }
 }
