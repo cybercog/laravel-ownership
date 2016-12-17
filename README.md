@@ -30,7 +30,7 @@ And then include the service provider within `app/config/app.php`.
 Laravel Ownership allows model to have strict owner model type (`HasOwner` trait) or use polymorphic relation (`HasMorphOwner` trait).
 
 Strict ownership is useful when model can belongs to only one model type. Attempt to set owner of not defined model type will throw an exception `InvalidOwnerType`.
-*Example: Only users allowed to create create posts.*
+*Example: Only users allowed to create posts.*
  
 Polymorphic ownership is useful when model can belongs to owners of different types.
 *Example: Users and Organizations can upload applications to marketplace.*
@@ -151,7 +151,7 @@ Article::whereOwnedBy($owner)->get();
 
 ### Set authenticated user as owner
 
-To set currently authenticated user as owner extend your ownable model with attribute `setDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
+To set currently authenticated user as owner on ownable model create - extend it with attribute `setDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
 
 ```php
 use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;

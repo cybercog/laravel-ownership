@@ -86,6 +86,7 @@ abstract class TestCase extends Orchestra
     private function setDefaultUserModel($app)
     {
         $app['config']->set('auth.providers.users.model', User::class);
+        dump('Set user model in config: ' . User::class);
     }
 
     protected function registerTestMorphMaps()
