@@ -143,15 +143,45 @@ $article->hasOwner();
 $article->isOwnedBy($owner);
 ```
 
+#### Manually define default owner on model creation
+
+```php
+$article = new Article();
+$article->withDefaultOwner()->save();
+```
+
+*Will use `resolveDefaultOwner()` method under the hood.*
+
+Or provide concrete owner:
+
+```php
+$user = User::where('name', 'admin')->first();
+$article = new Article();
+$article->withDefaultOwner($user)->save();
+```
+
+#### Skip defining default owner on model creation
+
+```php
+$article = new Article();
+$article->withoutDefaultOwner()->save();
+```
+
 #### Scope models by owner
 
 ```php
 Article::whereOwnedBy($owner)->get();
 ```
 
+#### Scope models by not owned by owner
+
+```php
+Article::whereNotOwnedBy($owner)->get();
+```
+
 ### Set authenticated user as owner
 
-To set currently authenticated user as owner for ownable model create - extend it with attribute `setDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
+To set currently authenticated user as owner for ownable model create - extend it with attribute `withDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
 
 ```php
 use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
@@ -161,11 +191,11 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model implements HasOwnerContract {
     use HasOwner;
 
-    public $setDefaultOwnerOnCreate = true;
+    protected $withDefaultOwnerOnCreate = true;
 }
 ```
 
-To override strategy of getting default owner extend ownable model with `getDefaultOwner` method:
+To override strategy of getting default owner extend ownable model with `resolveDefaultOwner` method:
 
 ```php
 use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
@@ -175,14 +205,14 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model implements HasOwnerContract {
     use HasOwner;
 
-    public $setDefaultOwnerOnCreate = true;
+    public $withDefaultOwnerOnCreate = true;
     
     /**
-     * Get model default owner.
+     * Resolve entity default owner.
      * 
      * @return \Cog\Ownership\Contracts\CanBeOwner|null
      */
-    public function getDefaultOwner()
+    public function resolveDefaultOwner()
     {
         return \App\User::where('name', 'admin')->first();
     }

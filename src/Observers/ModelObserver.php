@@ -11,7 +11,6 @@
 
 namespace Cog\Ownership\Observers;
 
-use Illuminate\Support\Facades\Auth;
 use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 
 /**
@@ -29,37 +28,12 @@ class ModelObserver
      */
     public function creating(HasOwnerContract $model)
     {
-        if ($this->isDefaultOwnerOnCreateRequired($model)) {
-            $owner = $this->getDefaultOwner($model);
-            if ($owner) {
-                $model->changeOwnerTo($owner);
-            }
-        }
-    }
-
-    /**
-     * Require to set default owner on create (defaults to false).
-     *
-     * @param \Cog\Ownership\Contracts\HasOwner $model
-     * @return bool
-     */
-    protected function isDefaultOwnerOnCreateRequired(HasOwnerContract $model)
-    {
-        return isset($model->setDefaultOwnerOnCreate) ? (bool) $model->setDefaultOwnerOnCreate : false;
-    }
-
-    /**
-     * Get model default owner.
-     *
-     * @param \Cog\Ownership\Contracts\HasOwner $model
-     * @return \Cog\Ownership\Contracts\CanBeOwner|null
-     */
-    protected function getDefaultOwner(HasOwnerContract $model)
-    {
-        if (method_exists($model, 'getDefaultOwner')) {
-            return $model->getDefaultOwner();
+        if ($model->isDefaultOwnerOnCreateRequired()) {
+            $model->withDefaultOwner();
         }
 
-        return Auth::user();
+        if ($owner = $model->defaultOwner()) {
+            $model->changeOwnerTo($owner);
+        }
     }
 }

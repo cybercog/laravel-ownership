@@ -16,6 +16,7 @@ use Cog\Ownership\Tests\Stubs\Models\User;
 use Cog\Ownership\Exceptions\InvalidOwnerType;
 use Cog\Ownership\Tests\Stubs\Models\Character;
 use Cog\Ownership\Tests\Stubs\Models\EntityWithOwner;
+use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultOwner;
 
 /**
  * Class HasOwnerTest.
@@ -133,14 +134,28 @@ class HasOwnerTest extends TestCase
     }
 
     /** @test */
+    public function it_can_scope_models_not_owned_by_owner()
+    {
+        $user1 = factory(User::class)->create();
+        factory(EntityWithOwner::class, 4)->create([
+            'owned_by' => $user1->getKey(),
+        ]);
+        $user2 = factory(User::class)->create();
+        factory(EntityWithOwner::class, 3)->create([
+            'owned_by' => $user2->getKey(),
+        ]);
+
+        $this->assertCount(3, EntityWithOwner::whereNotOwnedBy($user1)->get());
+    }
+
+    /** @test */
     public function it_can_set_default_owner_on_create()
     {
         $user = factory(User::class)->create();
         $this->actingAs($user);
-        $entity = factory(EntityWithOwner::class)->make([
+        $entity = factory(EntityWithDefaultOwner::class)->make([
             'owned_by' => null,
         ]);
-        $entity->setDefaultOwnerOnCreate = true;
         $entity->save();
 
         $this->assertInstanceOf(User::class, $entity->ownedBy);
@@ -149,11 +164,66 @@ class HasOwnerTest extends TestCase
     /** @test */
     public function it_cannot_set_default_owner_on_create_for_guest()
     {
+        $entity = factory(EntityWithDefaultOwner::class)->make([
+            'owned_by' => null,
+        ]);
+        $entity->save();
+
+        $this->assertNull($entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_can_manually_set_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
         $entity = factory(EntityWithOwner::class)->make([
             'owned_by' => null,
         ]);
-        $entity->setDefaultOwnerOnCreate = true;
-        $entity->save();
+        $entity->withDefaultOwner()->save();
+
+        $this->assertInstanceOf(User::class, $entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_can_manually_set_custom_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $user2 = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithOwner::class)->make([
+            'owned_by' => null,
+        ]);
+        $entity->withDefaultOwner($user2)->save();
+
+        $this->assertInstanceOf(User::class, $entity->ownedBy);
+        $this->assertEquals($user2->getKey(), $entity->ownedBy->getKey());
+    }
+
+    /** @test */
+    public function it_can_manually_override_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $user2 = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithDefaultOwner::class)->make([
+            'owned_by' => null,
+        ]);
+        $entity->withDefaultOwner($user2)->save();
+
+        $this->assertInstanceOf(User::class, $entity->ownedBy);
+        $this->assertEquals($user2->getKey(), $entity->ownedBy->getKey());
+    }
+
+    /** @test */
+    public function it_can_manually_unset_default_owner_on_create()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithDefaultOwner::class)->make([
+            'owned_by' => null,
+        ]);
+        $entity->withoutDefaultOwner()->save();
 
         $this->assertNull($entity->ownedBy);
     }
