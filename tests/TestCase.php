@@ -61,6 +61,8 @@ abstract class TestCase extends Orchestra
 
     /**
      * Perform unit test database migrations.
+     *
+     * @return void
      */
     protected function migrateUnitTestTables()
     {
@@ -71,6 +73,8 @@ abstract class TestCase extends Orchestra
 
     /**
      * Register package related model factories.
+     *
+     * @return void
      */
     private function registerPackageFactories()
     {
@@ -82,13 +86,18 @@ abstract class TestCase extends Orchestra
      * Set default user model used by tests.
      *
      * @param $app
+     * @return void
      */
     private function setDefaultUserModel($app)
     {
         $app['config']->set('auth.providers.users.model', User::class);
-        dump('Set user model in config: ' . User::class);
     }
 
+    /**
+     * Register morph map for test cases.
+     *
+     * @return void
+     */
     protected function registerTestMorphMaps()
     {
         Relation::morphMap([

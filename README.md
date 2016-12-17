@@ -151,7 +151,7 @@ Article::whereOwnedBy($owner)->get();
 
 ### Set authenticated user as owner
 
-To set currently authenticated user as owner on ownable model create - extend it with attribute `setDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
+To set currently authenticated user as owner for ownable model create - extend it with attribute `setDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
 
 ```php
 use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
