@@ -184,7 +184,7 @@ class Article extends Model implements HasOwnerContract {
      */
     public function getDefaultOwner()
     {
-        return static::where('name', 'admin')->first();
+        return \App\User::where('name', 'admin')->first();
     }
 }
 ```
