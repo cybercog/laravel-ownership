@@ -45,10 +45,9 @@ class OwnershipServiceProvider extends ServiceProvider
      */
     protected function bindUserModel()
     {
-        dump('In binding');
         $this->app->bind(CanBeOwnerContract::class, function ($app) {
             $config = $app->make('config');
-            dump('Get user model from config: ' . $config->get('auth.providers.users.model'));
+
             return $config->get('auth.providers.users.model', $config->get('auth.model'));
         });
     }
