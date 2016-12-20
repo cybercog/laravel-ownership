@@ -4,19 +4,19 @@ All notable changes to `laravel-ownership` will be documented in this file.
 
 ## 2.0.0 - 2016-12-17
 
-### Add
+### Added
 
 - `withDefaultOwner()` set default owner value on create.
-- `withDefaultOwner($owner)` overwrite default owner value on create.
-- `withoutDefaultOwner()` unset default owner value on create.
-- `scopeWhereNotOwner($owner)` scope results to exclude unowned records by owner.
+- `withDefaultOwner($owner)` overwrite default owner value on create with concrete owner.
+- `withoutDefaultOwner()` don't set default owner on model create.
+- `scopeWhereNotOwnedBy($owner)` scope results to exclude unowned records by owner.
 
-### Change
+### Changed
 
 - Renamed method `getDefaultOwner()` to `resolveDefaultOwner()`.
 - Renamed flag attribute `$setDefaultOwnerOnCreate` to `$withDefaultOwnerOnCreate`.
 
-### Fix
+### Fixed
 
 - Set default owner on model creation.
 

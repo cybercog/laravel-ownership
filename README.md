@@ -93,6 +93,14 @@ class Article extends Model implements HasOwnerContract {
 
 Ownable model with polymorphic ownership must have in database additional nullable columns to store owner relation:
 
+**Laravel 5.3.29 and newer**
+
+Schema::table('articles', function (Blueprint $table) {
+    $table->nullableMorphs('owned_by');
+});
+
+**Laravel 5.3.28 and older**
+
 ```php
 Schema::table('articles', function (Blueprint $table) {
     $table->integer('owned_by_id')->unsigned()->nullable();
