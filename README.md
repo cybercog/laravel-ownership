@@ -9,6 +9,20 @@ Laravel ownership simplify management of eloquent model's owner.
 
 ![cog-laravel-ownership](https://cloud.githubusercontent.com/assets/1849174/21267082/d2f45bb8-c3b9-11e6-8961-f55c7850aa06.png)
 
+## Features
+
+- Designed to work with Laravel Eloquent models
+- Using contracts to keep high customization capabilities
+- Each model can has owners of one type or use polymorphism
+- Option to auto-assigning current authenticated user on model creation as owner
+- Configurable auto-owner resolve strategy on model creation
+- Option to manually assign owner on model creation
+- Option to manually skip auto-assigning current user
+- Transfer ownership (change owner)
+- Make model orphaned (abandon owner)
+- Various ownership checks and query scopes
+- Covered with unit tests
+
 ## Installation
 
 First, pull in the package through Composer.
