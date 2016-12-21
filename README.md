@@ -276,7 +276,9 @@ If you discover any security related issues, please email support@cybercog.su in
 
 ## License
 
-Please see [License](LICENSE) file for more information.
+- `Laravel Ownership` package is open-sourced software licensed under the [MIT license](LICENSE).
+- `Intellectual Property` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Arthur Shlain.
+- `Fat Boss` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay. 
 
 ## About CyberCog
 
