@@ -165,6 +165,12 @@ $article->hasOwner();
 $article->isOwnedBy($owner);
 ```
 
+#### Check not owned by owner
+
+```php
+$article->isNotOwnedBy($owner);
+```
+
 #### Manually define default owner on model creation
 
 ```php

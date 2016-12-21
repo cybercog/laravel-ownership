@@ -112,7 +112,7 @@ class HasMorphOwnerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_owned_by()
+    public function it_can_return_true_from_is_owned_by()
     {
         $character = factory(Character::class)->create();
         $entity = factory(EntityWithMorphOwner::class)->create([
@@ -124,7 +124,7 @@ class HasMorphOwnerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_not_owned_by()
+    public function it_can_return_false_from_is_owned_by()
     {
         $character = factory(Character::class)->create();
         $entity = factory(EntityWithMorphOwner::class)->create([
@@ -134,6 +134,31 @@ class HasMorphOwnerTest extends TestCase
         $notOwnerUser = factory(Character::class)->create();
 
         $this->assertFalse($entity->isOwnedBy($notOwnerUser));
+    }
+
+    /** @test */
+    public function it_can_return_true_from_is_not_owned_by()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+        $notOwnerUser = factory(Character::class)->create();
+
+        $this->assertTrue($entity->isNotOwnedBy($notOwnerUser));
+    }
+
+    /** @test */
+    public function it_can_return_false_from_is_not_owned_by()
+    {
+        $character = factory(Character::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $character->getKey(),
+            'owned_by_type' => $character->getMorphClass(),
+        ]);
+
+        $this->assertFalse($entity->isNotOwnedBy($character));
     }
 
     /** @test */
