@@ -102,6 +102,14 @@ interface HasOwner
     public function isOwnedBy(CanBeOwnerContract $owner);
 
     /**
+     * Checks if model not owned by given owner.
+     *
+     * @param \Cog\Ownership\Contracts\CanBeOwner $owner
+     * @return bool
+     */
+    public function isNotOwnedBy(CanBeOwnerContract $owner);
+
+    /**
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query

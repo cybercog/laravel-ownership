@@ -96,7 +96,7 @@ class HasCustomizedOwnerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_owned_by()
+    public function it_can_return_true_from_is_owned_by()
     {
         $group = factory(Group::class)->create();
         $entity = factory(EntityWithCustomizedOwner::class)->create([
@@ -107,7 +107,7 @@ class HasCustomizedOwnerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_if_not_group_id()
+    public function it_can_return_false_from_is_owned_by()
     {
         $group = factory(Group::class)->create();
         $entity = factory(EntityWithCustomizedOwner::class)->create([
@@ -116,6 +116,29 @@ class HasCustomizedOwnerTest extends TestCase
         $notOwnerUser = factory(Group::class)->create();
 
         $this->assertFalse($entity->isOwnedBy($notOwnerUser));
+    }
+
+    /** @test */
+    public function it_can_return_true_from_is_not_owned_by()
+    {
+        $group = factory(Group::class)->create();
+        $entity = factory(EntityWithCustomizedOwner::class)->create([
+            'group_id' => $group->getKey(),
+        ]);
+        $notOwner = factory(Group::class)->create();
+
+        $this->assertTrue($entity->isNotOwnedBy($notOwner));
+    }
+
+    /** @test */
+    public function it_can_return_false_from_is_not_owned_by()
+    {
+        $group = factory(Group::class)->create();
+        $entity = factory(EntityWithCustomizedOwner::class)->create([
+            'group_id' => $group->getKey(),
+        ]);
+
+        $this->assertFalse($entity->isNotOwnedBy($group));
     }
 
     /** @test */

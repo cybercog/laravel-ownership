@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-ownership` will be documented in this file.
 
+## 2.1.0 - 2016-12-21
+
+### Added
+
+- `isNotOwnedBy($owner)` to check if model not owned by concrete owner.
+
 ## 2.0.0 - 2016-12-17
 
 ### Added
