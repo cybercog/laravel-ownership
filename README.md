@@ -109,9 +109,11 @@ Ownable model with polymorphic ownership must have in database additional nullab
 
 **Laravel 5.3.29 and newer**
 
+```php
 Schema::table('articles', function (Blueprint $table) {
     $table->nullableMorphs('owned_by');
 });
+```
 
 **Laravel 5.3.28 and older**
 
