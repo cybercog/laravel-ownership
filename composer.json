@@ -1,6 +1,8 @@
 {
     "name": "cybercog/laravel-ownership",
-    "description": "Laravel ownership simplify management of eloquent model's owner.",
+    "description": "Laravel Ownership simplify management of Eloquent model's owner.",
+    "type": "library",
+    "license": "MIT",
     "keywords": [
         "cybercog",
         "cog",
@@ -19,7 +21,6 @@
         "creator",
         "master"
     ],
-    "homepage": "https://github.com/cybercog/laravel-ownership",
     "authors": [
         {
             "name": "Anton Komarev",
@@ -28,8 +29,14 @@
             "role": "Developer"
         }
     ],
-    "license": "MIT",
-    "type": "library",
+    "homepage": "https://github.com/cybercog/laravel-ownership",
+    "support": {
+        "email": "a.komarev@cybercog.su",
+        "issues": "https://github.com/cybercog/laravel-ownership/issues",
+        "wiki": "https://github.com/cybercog/laravel-ownership/wiki",
+        "source": "https://github.com/cybercog/laravel-ownership",
+        "docs": "https://github.com/cybercog/laravel-ownership/wiki"
+    },
     "require": {
         "php": "^5.6|^7.0",
         "illuminate/database": "~5.2.0|~5.3.0|~5.4.0",
@@ -50,5 +57,8 @@
         "psr-4": {
             "Cog\\Ownership\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
