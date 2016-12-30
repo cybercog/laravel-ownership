@@ -274,6 +274,8 @@ If you discover any security related issues, please email support@cybercog.su in
 
 - [kenarkose/Ownable](https://github.com/kenarkose/Ownable)
 
+*Feel free to add more alternatives as Pull Request.* 
+
 ## License
 
 - `Laravel Ownership` package is open-sourced software licensed under the [MIT license](LICENSE).
