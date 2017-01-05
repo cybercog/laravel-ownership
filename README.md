@@ -27,7 +27,7 @@ Laravel ownership simplify management of eloquent model's owner.
 
 First, pull in the package through Composer.
 
-```shell
+```sh
 composer require cybercog/laravel-ownership
 ```
 
@@ -58,7 +58,8 @@ use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 use Cog\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract {
+class Article extends Model implements HasOwnerContract
+{
 	use HasOwner;
 }
 ```
@@ -82,7 +83,8 @@ use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 use Cog\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract {
+class Article extends Model implements HasOwnerContract
+{
     use HasOwner;
 
     protected $ownerModel = Group::class;
@@ -100,7 +102,8 @@ use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 use Cog\Ownership\Traits\HasMorphOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract {
+class Article extends Model implements HasOwnerContract
+{
 	use HasMorphOwner;
 }
 ```
@@ -218,7 +221,8 @@ use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 use Cog\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract {
+class Article extends Model implements HasOwnerContract
+{
     use HasOwner;
 
     protected $withDefaultOwnerOnCreate = true;
@@ -232,7 +236,8 @@ use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 use Cog\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract {
+class Article extends Model implements HasOwnerContract
+{
     use HasOwner;
 
     public $withDefaultOwnerOnCreate = true;
@@ -253,7 +258,7 @@ class Article extends Model implements HasOwnerContract {
 
 Run the tests with:
 
-```shell
+```sh
 vendor/bin/phpunit
 ```
 
