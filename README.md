@@ -1,13 +1,15 @@
-# Laravel Ownership
+![cog-laravel-ownership-3](https://cloud.githubusercontent.com/assets/1849174/21737911/ee344682-d48e-11e6-9ace-eea37026ae6d.png)
 
-[![Build Status](https://img.shields.io/travis/cybercog/laravel-ownership/master.svg?style=flat-square)](https://travis-ci.org/cybercog/laravel-ownership)
-[![StyleCI](https://styleci.io/repos/76651386/shield)](https://styleci.io/repos/76651386)
-[![Releases](https://img.shields.io/github/release/cybercog/laravel-ownership.svg?style=flat-square)](https://github.com/cybercog/laravel-ownership/releases)
-[![License](https://img.shields.io/github/license/cybercog/laravel-ownership.svg?style=flat-square)](https://github.com/cybercog/laravel-ownership/blob/master/LICENSE)
+<p align="center">
+<a href="https://travis-ci.org/cybercog/laravel-ownership"><img src="https://img.shields.io/travis/cybercog/laravel-ownership/master.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://styleci.io/repos/76651386"><img src="https://styleci.io/repos/76651386/shield" alt="StyleCI"></a>
+<a href="https://github.com/cybercog/laravel-ownership/releases"><img src="https://img.shields.io/github/release/cybercog/laravel-ownership.svg?style=flat-square" alt="Releases"></a>
+<a href="https://github.com/cybercog/laravel-ownership/blob/master/LICENSE"><img src="https://img.shields.io/github/license/cybercog/laravel-ownership.svg?style=flat-square" alt="License"></a>
+</p>
 
-Laravel ownership simplify management of eloquent model's owner.
+## Introduction
 
-![cog-laravel-ownership](https://cloud.githubusercontent.com/assets/1849174/21267082/d2f45bb8-c3b9-11e6-8961-f55c7850aa06.png)
+Laravel Ownership simplify management of eloquent model's owner. Group can be an owner of event, user can be an owner of chat room, organization can own licenses. It can be used for many cases not limited by authorship. Make any model as owner and create ownable models in a minutes! 
 
 ## Features
 
@@ -268,7 +270,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email support@cybercog.su instead of using the issue tracker.
+If you discover any security related issues, please email a.komarev@cybercog.su instead of using the issue tracker.
 
 ## Credits
 
