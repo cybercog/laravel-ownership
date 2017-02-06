@@ -30,6 +30,7 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
+        $this->registerMigrations();
         $this->migrateUnitTestTables();
         $this->registerPackageFactories();
         $this->registerTestMorphMaps();
@@ -60,15 +61,26 @@ abstract class TestCase extends Orchestra
     }
 
     /**
+     * Register test migrations.
+     *
+     * @return void
+     */
+    protected function registerMigrations()
+    {
+        $this->loadMigrationsFrom([
+            //'--database' => 'sqlite',
+            '--realpath' => realpath(__DIR__ . '/database/migrations'),
+        ]);
+    }
+
+    /**
      * Perform unit test database migrations.
      *
      * @return void
      */
     protected function migrateUnitTestTables()
     {
-        $this->artisan('migrate', [
-            '--realpath' => realpath(__DIR__ . '/database/migrations'),
-        ]);
+        $this->artisan('migrate');
     }
 
     /**

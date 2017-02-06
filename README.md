@@ -140,12 +140,15 @@ Schema::table('articles', function (Blueprint $table) {
 
 ```php
 $article->ownedBy();
+$article->owner();
 ```
 
 #### Get model owner
 
 ```php
 $article->getOwner();
+$article->ownedBy;
+$article->owner;
 ```
 
 #### Change (set) owner

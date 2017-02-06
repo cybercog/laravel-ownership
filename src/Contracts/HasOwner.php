@@ -29,6 +29,13 @@ interface HasOwner
     public function ownedBy();
 
     /**
+     * Get the model owner. Alias for `ownedBy()` method.
+     *
+     * @return mixed
+     */
+    public function owner();
+
+    /**
      * Get the model owner.
      *
      * @return \Cog\Ownership\Contracts\CanBeOwner

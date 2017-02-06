@@ -17,6 +17,7 @@ use Cog\Ownership\Exceptions\InvalidOwnerType;
 use Cog\Ownership\Tests\Stubs\Models\Character;
 use Cog\Ownership\Tests\Stubs\Models\EntityWithOwner;
 use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultOwner;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class HasOwnerTest.
@@ -26,6 +27,28 @@ use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultOwner;
 class HasOwnerTest extends TestCase
 {
     /** @test */
+    public function it_can_get_owner_relation()
+    {
+        $user = factory(User::class)->create();
+        $entity = factory(EntityWithOwner::class)->create([
+            'owned_by' => $user->getKey(),
+        ]);
+
+        $this->assertInstanceOf(BelongsTo::class, $entity->ownedBy());
+    }
+
+    /** @test */
+    public function it_can_get_owner_relation_using_alias()
+    {
+        $user = factory(User::class)->create();
+        $entity = factory(EntityWithOwner::class)->create([
+            'owned_by' => $user->getKey(),
+        ]);
+
+        $this->assertInstanceOf(BelongsTo::class, $entity->owner());
+    }
+
+    /** @test */
     public function it_can_belong_to_owner()
     {
         $user = factory(User::class)->create();
@@ -34,6 +57,17 @@ class HasOwnerTest extends TestCase
         ]);
 
         $this->assertInstanceOf(User::class, $entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_can_belong_to_owner_using_alias()
+    {
+        $user = factory(User::class)->create();
+        $entity = factory(EntityWithOwner::class)->create([
+            'owned_by' => $user->getKey(),
+        ]);
+
+        $this->assertInstanceOf(User::class, $entity->owner);
     }
 
     /** @test */

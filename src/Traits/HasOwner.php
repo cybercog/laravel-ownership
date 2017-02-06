@@ -50,6 +50,16 @@ trait HasOwner
     }
 
     /**
+     * Get the model owner. Alias for `ownedBy()` method.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner()
+    {
+        return $this->ownedBy();
+    }
+
+    /**
      * Get the model owner.
      *
      * @return \Cog\Ownership\Contracts\CanBeOwner
