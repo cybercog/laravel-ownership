@@ -57,6 +57,7 @@ abstract class TestCase extends Orchestra
     {
         return [
             \Cog\Ownership\Providers\OwnershipServiceProvider::class,
+            \Orchestra\Database\ConsoleServiceProvider::class,
         ];
     }
 
