@@ -49,6 +49,16 @@ trait HasMorphOwner
     }
 
     /**
+     * Get the model owner. Alias for `ownedBy()` method.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function owner()
+    {
+        return $this->ownedBy();
+    }
+
+    /**
      * Get the model owner.
      *
      * @return \Cog\Ownership\Contracts\CanBeOwner

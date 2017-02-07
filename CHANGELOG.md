@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-ownership` will be documented in this file.
 
+## 2.2.0 - 2017-02-07
+
+### Added
+
+- `owner()` alias for method `ownedBy`
+- Laravel 5.4 support
+
 ## 2.1.0 - 2016-12-21
 
 ### Added
