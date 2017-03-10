@@ -36,3 +36,7 @@ All notable changes to `laravel-ownership` will be documented in this file.
 ## 1.0.0 - 2016-12-15
 
 - Initial release
+
+[2.2.0]: https://github.com/cybercog/laravel-ownership/compare/2.1.0...2.2.0
+[2.1.0]: https://github.com/cybercog/laravel-ownership/compare/2.0.0...2.1.0
+[2.0.0]: https://github.com/cybercog/laravel-ownership/compare/1.0.0...2.0.0
