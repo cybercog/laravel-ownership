@@ -15,8 +15,20 @@ use Exception;
 use Cog\Ownership\Contracts\HasOwner;
 use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
 
+/**
+ * Class InvalidOwnerType.
+ *
+ * @package Cog\Ownership\Exceptions
+ */
 class InvalidOwnerType extends Exception
 {
+    /**
+     * Owner of the provided type is not allowed to own this model.
+     *
+     * @param \Cog\Ownership\Contracts\HasOwner $model
+     * @param \Cog\Ownership\Contracts\CanBeOwner $owner
+     * @return static
+     */
     public static function notAllowed(HasOwner $model, CanBeOwnerContract $owner)
     {
         return new static(sprintf('Model `%s` not allows owner of type `%s`.', get_class($model), get_class($owner)));
