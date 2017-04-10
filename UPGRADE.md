@@ -18,4 +18,4 @@ You are able to keep old naming without any database changes. Overwrite foreign 
 protected $ownerForeignKey = 'owned_by';
 ```
 
-[See example of foreign key overwrite](https://github.com/cybercog/laravel-ownership#overwrite-strict-ownership-owner-foreign-key)
+[See example of foreign key overwrite](https://github.com/cybercog/laravel-ownership#overwrite-strict-ownership-owners-foreign-key)
