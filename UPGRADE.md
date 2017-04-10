@@ -10,7 +10,7 @@ You need to upgrade only if you have models with Strict Ownership and you are us
 - Rename database columns `owned_by` to `owned_by_id` for all the ownable models with strict ownership.
 - If you have raw DB queries - don't forget to modify them as well.
 
-#### What if I want to keep old naming?!
+### What if I want to keep old naming?!
 
 You are able to keep old naming without any database changes. Overwrite foreign keys in ownable models by adding `$ownerForeignKey` property:
 
@@ -18,4 +18,4 @@ You are able to keep old naming without any database changes. Overwrite foreign 
 protected $ownerForeignKey = 'owned_by';
 ```
 
-[See example of foreign key overwrite](https://github.com/cybercog/laravel-ownership#prepare-ownable-model-with-strict-ownership)
+[See example of foreign key overwrite](https://github.com/cybercog/laravel-ownership#overwrite-strict-ownership-owner-foreign-key)
