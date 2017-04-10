@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-ownership` will be documented in this file.
 
+## [3.0.0] - 2017-04-10
+
+### Changed
+
+- Default database column used by models with strict ownership was renamed from `owned_by` to `owned_by_id`.
+
+[Upgrade instructions]
+
 ## [2.2.0] - 2017-02-07
 
 ### Added
@@ -37,6 +45,8 @@ All notable changes to `laravel-ownership` will be documented in this file.
 
 - Initial release
 
+[3.0.0]: https://github.com/cybercog/laravel-ownership/compare/2.2.0...3.0.0
 [2.2.0]: https://github.com/cybercog/laravel-ownership/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/cybercog/laravel-ownership/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/cybercog/laravel-ownership/compare/1.0.0...2.0.0
+[Upgrade instructions]: UPGRADE.md
