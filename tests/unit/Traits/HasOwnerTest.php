@@ -31,7 +31,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertInstanceOf(BelongsTo::class, $entity->ownedBy());
@@ -42,7 +42,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertInstanceOf(BelongsTo::class, $entity->owner());
@@ -53,7 +53,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertInstanceOf(User::class, $entity->ownedBy);
@@ -64,7 +64,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertInstanceOf(User::class, $entity->owner);
@@ -75,7 +75,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertInstanceOf(User::class, $entity->getOwner());
@@ -87,7 +87,7 @@ class HasOwnerTest extends TestCase
         $user = factory(User::class)->create();
         $newUser = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
         $entity->changeOwnerTo($newUser);
 
@@ -99,7 +99,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
         $this->assertInstanceOf(User::class, $entity->getOwner());
 
@@ -113,7 +113,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertTrue($entity->hasOwner());
@@ -123,7 +123,7 @@ class HasOwnerTest extends TestCase
     public function it_can_check_if_dont_have_owner()
     {
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => null,
+            'owned_by_id' => null,
         ]);
 
         $this->assertFalse($entity->hasOwner());
@@ -134,7 +134,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertTrue($entity->isOwnedBy($user));
@@ -145,7 +145,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
         $notOwnerUser = factory(User::class)->create();
 
@@ -157,7 +157,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
         $notOwnerUser = factory(User::class)->create();
 
@@ -169,7 +169,7 @@ class HasOwnerTest extends TestCase
     {
         $user = factory(User::class)->create();
         $entity = factory(EntityWithOwner::class)->create([
-            'owned_by' => $user->getKey(),
+            'owned_by_id' => $user->getKey(),
         ]);
 
         $this->assertFalse($entity->isNotOwnedBy($user));
@@ -180,11 +180,11 @@ class HasOwnerTest extends TestCase
     {
         $user1 = factory(User::class)->create();
         factory(EntityWithOwner::class, 4)->create([
-            'owned_by' => $user1->getKey(),
+            'owned_by_id' => $user1->getKey(),
         ]);
         $user2 = factory(User::class)->create();
         factory(EntityWithOwner::class, 3)->create([
-            'owned_by' => $user2->getKey(),
+            'owned_by_id' => $user2->getKey(),
         ]);
 
         $this->assertCount(4, EntityWithOwner::whereOwnedBy($user1)->get());
@@ -195,11 +195,11 @@ class HasOwnerTest extends TestCase
     {
         $user1 = factory(User::class)->create();
         factory(EntityWithOwner::class, 4)->create([
-            'owned_by' => $user1->getKey(),
+            'owned_by_id' => $user1->getKey(),
         ]);
         $user2 = factory(User::class)->create();
         factory(EntityWithOwner::class, 3)->create([
-            'owned_by' => $user2->getKey(),
+            'owned_by_id' => $user2->getKey(),
         ]);
 
         $this->assertCount(3, EntityWithOwner::whereNotOwnedBy($user1)->get());
@@ -211,7 +211,7 @@ class HasOwnerTest extends TestCase
         $user = factory(User::class)->create();
         $this->actingAs($user);
         $entity = factory(EntityWithDefaultOwner::class)->make([
-            'owned_by' => null,
+            'owned_by_id' => null,
         ]);
         $entity->save();
 
@@ -222,7 +222,7 @@ class HasOwnerTest extends TestCase
     public function it_cannot_set_default_owner_on_create_for_guest()
     {
         $entity = factory(EntityWithDefaultOwner::class)->make([
-            'owned_by' => null,
+            'owned_by_id' => null,
         ]);
         $entity->save();
 
@@ -235,7 +235,7 @@ class HasOwnerTest extends TestCase
         $user = factory(User::class)->create();
         $this->actingAs($user);
         $entity = factory(EntityWithOwner::class)->make([
-            'owned_by' => null,
+            'owned_by_id' => null,
         ]);
         $entity->withDefaultOwner()->save();
 
@@ -249,7 +249,7 @@ class HasOwnerTest extends TestCase
         $user2 = factory(User::class)->create();
         $this->actingAs($user);
         $entity = factory(EntityWithOwner::class)->make([
-            'owned_by' => null,
+            'owned_by_id' => null,
         ]);
         $entity->withDefaultOwner($user2)->save();
 
@@ -264,7 +264,7 @@ class HasOwnerTest extends TestCase
         $user2 = factory(User::class)->create();
         $this->actingAs($user);
         $entity = factory(EntityWithDefaultOwner::class)->make([
-            'owned_by' => null,
+            'owned_by_id' => null,
         ]);
         $entity->withDefaultOwner($user2)->save();
 
@@ -278,7 +278,7 @@ class HasOwnerTest extends TestCase
         $user = factory(User::class)->create();
         $this->actingAs($user);
         $entity = factory(EntityWithDefaultOwner::class)->make([
-            'owned_by' => null,
+            'owned_by_id' => null,
         ]);
         $entity->withoutDefaultOwner()->save();
 

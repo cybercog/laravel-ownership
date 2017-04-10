@@ -245,6 +245,6 @@ trait HasOwner
      */
     protected function getOwnerForeignKey()
     {
-        return $this->ownerForeignKey ?: 'owned_by';
+        return $this->ownerForeignKey ?: 'owned_by_id';
     }
 }
