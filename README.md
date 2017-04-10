@@ -89,9 +89,9 @@ Ownable model with strict ownership must have in database additional nullable co
 
 ```php
 Schema::table('articles', function (Blueprint $table) {
-    $table->integer('owned_by')->unsigned()->nullable();
+    $table->integer('owned_by_id')->unsigned()->nullable();
     
-    $table->index('owned_by');
+    $table->index('owned_by_id');
 });
 ```
 

@@ -12,6 +12,6 @@
 $factory->define(\Cog\Ownership\Tests\Stubs\Models\EntityWithOwner::class, function (\Faker\Generator $faker) {
     return [
         'name' => $faker->word,
-        'owned_by' => null,
+        'owned_by_id' => null,
     ];
 });

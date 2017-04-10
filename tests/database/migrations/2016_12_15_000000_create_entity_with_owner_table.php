@@ -28,7 +28,7 @@ class CreateEntityWithOwnerTable extends Migration
         Schema::create('entity_with_owner', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('owned_by')->unsigned()->nullable();
+            $table->integer('owned_by_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
