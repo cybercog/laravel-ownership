@@ -95,7 +95,7 @@ Schema::table('articles', function (Blueprint $table) {
 });
 ```
 
-#### Overwrite strict ownership owner foreign key
+#### Overwrite strict ownership owner's foreign key
 
 By default owner model will be the same as `config('auth.providers.users.model')` provides.
 
