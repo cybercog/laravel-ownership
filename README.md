@@ -42,6 +42,8 @@ Laravel Ownership simplify management of eloquent model's owner. Group can be an
 - Transfer ownership (change owner)
 - Make model orphaned (abandon owner)
 - Various ownership checks and query scopes
+  - [PSR-2 (Coding Style Guide)](http://www.php-fig.org/psr/psr-2/).
+  - [PSR-4 (Autoloading Standard)](http://www.php-fig.org/psr/psr-4/).
 - Covered with unit tests
 
 ## Installation
@@ -304,8 +306,11 @@ If you discover any security related issues, please email oss@cybercog.su instea
 
 ## Credits
 
-- [Anton Komarev](https://github.com/a-komarev)
-- [All Contributors](../../contributors)
+|  | @mention |
+|---|---|
+| ![@a-komarev](https://avatars2.githubusercontent.com/u/1849174?s=64) | [@a-komarev](https://github.com/a-komarev) |
+
+[Laravel Ownership contributors list](../../contributors)
 
 ## Alternatives
 
@@ -323,4 +328,4 @@ If you discover any security related issues, please email oss@cybercog.su instea
 
 [CyberCog](http://www.cybercog.ru) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
 
-![cybercog-logo](https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png)
+<a href="http://cybercog.ru"><img src="https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png" alt="CyberCog"></a>
