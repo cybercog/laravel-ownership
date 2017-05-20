@@ -42,6 +42,7 @@ Laravel Ownership simplify management of eloquent model's owner. Group can be an
 - Transfer ownership (change owner)
 - Make model orphaned (abandon owner)
 - Various ownership checks and query scopes
+- Following PHP Standard Recommendations:
   - [PSR-2 (Coding Style Guide)](http://www.php-fig.org/psr/psr-2/).
   - [PSR-4 (Autoloading Standard)](http://www.php-fig.org/psr/psr-4/).
 - Covered with unit tests
