@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultCustomizedOwner;
 use Faker\Generator;
 
