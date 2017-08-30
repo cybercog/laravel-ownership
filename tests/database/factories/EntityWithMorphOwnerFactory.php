@@ -9,7 +9,11 @@
  * file that was distributed with this source code.
  */
 
-$factory->define(\Cog\Ownership\Tests\Stubs\Models\EntityWithMorphOwner::class, function (\Faker\Generator $faker) {
+use Cog\Ownership\Tests\Stubs\Models\EntityWithMorphOwner;
+use Faker\Generator;
+
+/* @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(EntityWithMorphOwner::class, function (Generator $faker) {
     return [
         'name' => $faker->word,
         'owned_by_id' => null,

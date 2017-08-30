@@ -22,6 +22,7 @@ Laravel Ownership simplify management of eloquent model's owner. Group can be an
      - [Scopes](#scopes)
      - [Set authenticated user as owner automatically](#set-authenticated-user-as-owner-automatically)
  - [Change log](#change-log)
+ - [Upgrading](#upgrading)
  - [Contributing](#contributing)
  - [Testing](#testing)
  - [Security](#security)
@@ -52,7 +53,7 @@ Laravel Ownership simplify management of eloquent model's owner. Group can be an
 First, pull in the package through Composer.
 
 ```sh
-composer require cybercog/laravel-ownership
+$ composer require cybercog/laravel-ownership
 ```
 
 And then include the service provider within `app/config/app.php`.
@@ -289,6 +290,10 @@ class Article extends Model implements HasOwnerContract
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
+## Upgrading
+
+Please see [UPGRADING](UPGRADING.md) for detailed upgrade instructions.
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
@@ -298,12 +303,12 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 Run the tests with:
 
 ```sh
-vendor/bin/phpunit
+$ vendor/bin/phpunit
 ```
 
 ## Security
 
-If you discover any security related issues, please email oss@cybercog.su instead of using the issue tracker.
+If you discover any security related issues, please email open@cybercog.su instead of using the issue tracker.
 
 ## Credits
 
@@ -328,5 +333,8 @@ If you discover any security related issues, please email oss@cybercog.su instea
 ## About CyberCog
 
 [CyberCog](http://www.cybercog.ru) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
+
+- [Follow us on Twitter](https://twitter.com/cybercog)
+- [Read our articles on Medium](https://medium.com/cybercog)
 
 <a href="http://cybercog.ru"><img src="https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png" alt="CyberCog"></a>

@@ -49,4 +49,4 @@ All notable changes to `laravel-ownership` will be documented in this file.
 [2.2.0]: https://github.com/cybercog/laravel-ownership/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/cybercog/laravel-ownership/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/cybercog/laravel-ownership/compare/1.0.0...2.0.0
-[Upgrade instructions]: UPGRADE.md
+[Upgrade instructions]: UPGRADING.md
