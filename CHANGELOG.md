@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-ownership` will be documented in this file.
 
+## [3.1.0] - 2017-08-30
+
+### Added
+
+- Laravel 5.5 support
+- Service Provider auto-discovery
+
 ## [3.0.0] - 2017-04-10
 
 ### Changed
@@ -45,6 +52,7 @@ All notable changes to `laravel-ownership` will be documented in this file.
 
 - Initial release
 
+[3.1.0]: https://github.com/cybercog/laravel-ownership/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/cybercog/laravel-ownership/compare/2.2.0...3.0.0
 [2.2.0]: https://github.com/cybercog/laravel-ownership/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/cybercog/laravel-ownership/compare/2.0.0...2.1.0
