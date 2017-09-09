@@ -14,9 +14,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateEntityWithOwnerTable.
+ * Class CreateEntityWithMorphOwnersTable.
  */
-class CreateEntityWithOwnerTable extends Migration
+class CreateEntityWithMorphOwnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -25,11 +25,17 @@ class CreateEntityWithOwnerTable extends Migration
      */
     public function up()
     {
-        Schema::create('entity_with_owner', function (Blueprint $table) {
+        Schema::create('entity_with_morph_owners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('owned_by_id')->unsigned()->nullable();
+            $table->string('owned_by_type')->nullable();
             $table->timestamps();
+
+            $table->index([
+                'owned_by_id',
+                'owned_by_type',
+            ]);
         });
     }
 
@@ -40,6 +46,6 @@ class CreateEntityWithOwnerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entity_with_owner');
+        Schema::dropIfExists('entity_with_morph_owners');
     }
 }

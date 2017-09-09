@@ -26,7 +26,7 @@ class Character extends Model implements CanBeOwnerContract
      *
      * @var string
      */
-    protected $table = 'character';
+    protected $table = 'characters';
 
     /**
      * The attributes that are mass assignable.

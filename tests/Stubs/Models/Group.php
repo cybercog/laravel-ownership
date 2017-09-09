@@ -33,7 +33,7 @@ class Group extends Model implements CanBeOwnerContract
      *
      * @var string
      */
-    protected $table = 'group';
+    protected $table = 'groups';
 
     /**
      * The attributes that are mass assignable.

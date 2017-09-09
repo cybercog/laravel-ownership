@@ -29,7 +29,7 @@ class EntityWithMorphOwner extends Model implements OwnableContract
      *
      * @var string
      */
-    protected $table = 'entity_with_morph_owner';
+    protected $table = 'entity_with_morph_owners';
 
     /**
      * The attributes that are mass assignable.

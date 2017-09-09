@@ -14,13 +14,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateUserTable.
+ * Class CreateCharactersTable.
  */
-class CreateUserTable extends Migration
+class CreateCharactersTable extends Migration
 {
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('characters', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateUserTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('characters');
     }
 }

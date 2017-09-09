@@ -31,7 +31,7 @@ class EntityWithDefaultOwner extends Model implements OwnableContract
      *
      * @var string
      */
-    protected $table = 'entity_with_owner';
+    protected $table = 'entity_with_owners';
 
     /**
      * The attributes that are mass assignable.

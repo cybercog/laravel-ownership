@@ -51,7 +51,7 @@ class EntityWithCustomizedOwner extends Model implements OwnableContract
      *
      * @var string
      */
-    protected $table = 'entity_with_customized_owner';
+    protected $table = 'entity_with_customized_owners';
 
     /**
      * The attributes that are mass assignable.

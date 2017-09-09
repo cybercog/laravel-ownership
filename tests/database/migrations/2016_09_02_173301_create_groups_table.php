@@ -14,32 +14,22 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateEntityWithCustomizedOwnerTable.
+ * Class CreateGroupsTable.
  */
-class CreateEntityWithCustomizedOwnerTable extends Migration
+class CreateGroupsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('entity_with_customized_owner', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('groups', function (Blueprint $table) {
+            $table->increments('gid');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('name');
-            $table->integer('group_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('entity_with_customized_owner');
+        Schema::dropIfExists('groups');
     }
 }
