@@ -9,15 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Providers;
+namespace Cog\Laravel\Ownership\Providers;
 
+use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Support\ServiceProvider;
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
+use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class OwnershipServiceProvider.
  *
- * @package Cog\Ownership\Providers
+ * @package Cog\Laravel\Ownership\Providers
  */
 class OwnershipServiceProvider extends ServiceProvider
 {
@@ -45,7 +46,7 @@ class OwnershipServiceProvider extends ServiceProvider
      */
     protected function bindUserModel()
     {
-        $this->app->bind(CanBeOwnerContract::class, function ($app) {
+        $this->app->bind(CanBeOwnerContract::class, function (ApplicationContract $app) {
             $config = $app->make('config');
 
             return $config->get('auth.providers.users.model', $config->get('auth.model'));

@@ -9,18 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Tests\Stubs\Models;
+namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
-use Cog\Ownership\Traits\HasOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class EntityWithCustomizedOwner.
  *
- * @package Cog\Ownership\Tests\Stubs\Models
+ * @package Cog\Tests\Laravel\Ownership\Stubs\Models
  */
-class EntityWithCustomizedOwner extends Model implements HasOwnerContract
+class EntityWithCustomizedOwner extends Model implements OwnableContract
 {
     use HasOwner;
 
@@ -64,12 +65,23 @@ class EntityWithCustomizedOwner extends Model implements HasOwnerContract
     /**
      * Get model default owner.
      *
-     * @return \Cog\Ownership\Contracts\CanBeOwner
+     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
      */
     public function resolveDefaultOwner()
     {
-        return factory(Group::class)->create([
-            'name' => 'default-group-owner',
-        ]);
+        $user = Auth::user();
+        if (!$user) {
+            return null;
+        }
+
+        $group = Group::where('user_id', $user->getKey())->first();
+        if (!$group) {
+            $group = Group::create([
+                'user_id' => $user->getKey(),
+                'name' => 'default-group-owner',
+            ]);
+        }
+
+        return $group;
     }
 }

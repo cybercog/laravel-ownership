@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Tests\Stubs\Models;
+namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
-use Cog\Ownership\Traits\HasOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 
 /**
  * Class EntityWithOwner.
  *
- * @package Cog\Ownership\Tests\Stubs\Models
+ * @package Cog\Tests\Laravel\Ownership\Stubs\Models
  */
-class EntityWithOwner extends Model implements HasOwnerContract
+class EntityWithOwner extends Model implements OwnableContract
 {
     use HasOwner;
 

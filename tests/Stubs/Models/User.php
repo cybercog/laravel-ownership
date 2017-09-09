@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Tests\Stubs\Models;
+namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Cog\Ownership\Contracts\CanBeOwner as CanBeOwnerContract;
+use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class User.
  *
- * @package Cog\Ownership\Tests\Stubs\Models
+ * @package Cog\Tests\Laravel\Ownership\Stubs\Models
  */
 class User extends Authenticatable implements CanBeOwnerContract
 {

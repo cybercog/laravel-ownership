@@ -1,9 +1,18 @@
 # Upgrade Guide
 
-- [Upgrading To 3.0 From 2.0](#upgrade-3.0)
+- [Upgrading From 3.0 To 4.0](#upgrade-4.0)
+- [Upgrading From 2.0 To 3.0](#upgrade-3.0)
 
 <a name="upgrade-3.0"></a>
-## Upgrading To 3.0 From 2.0
+## Upgrading From 3.0 To 4.0
+
+- Find all `Cog\Ownership\Contracts\HasOwner` and replace with `Cog\Contracts\Laravel\Ownership\Ownable`
+- Find all `Cog\Ownership\Observers\ModelObserver` and replace with `Cog\Laravel\Ownership\Observers\OwnableObserver`
+- Find all `Cog\Ownership\Contracts` and replace with `Cog\Contracts\Laravel\Ownership`
+- Find all `Cog\Ownership` and replace with `Cog\Laravel\Ownership`
+
+<a name="upgrade-3.0"></a>
+## Upgrading From 2.0 To 3.0
 
 You need to upgrade only if you have models with Strict Ownership and you are using default `owned_by` column names.
 
