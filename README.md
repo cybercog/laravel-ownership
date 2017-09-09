@@ -209,7 +209,7 @@ $article->isNotOwnedBy($owner);
 #### Manually define default owner on model creation
 
 ```php
-$article = new Article();
+$article = new Article;
 $article->withDefaultOwner()->save();
 ```
 
@@ -219,14 +219,14 @@ Or provide concrete owner:
 
 ```php
 $user = User::where('name', 'admin')->first();
-$article = new Article();
+$article = new Article;
 $article->withDefaultOwner($user)->save();
 ```
 
 #### Skip defining default owner on model creation
 
 ```php
-$article = new Article();
+$article = new Article;
 $article->withoutDefaultOwner()->save();
 ```
 
