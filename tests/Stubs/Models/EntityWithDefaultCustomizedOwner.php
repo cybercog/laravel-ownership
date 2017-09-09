@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Tests\Stubs\Models;
+namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
-use Cog\Ownership\Traits\HasOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
 
 /**
  * Class EntityWithDefaultCustomizedOwner.
  *
- * @package Cog\Ownership\Tests\Stubs\Models
+ * @package Cog\Tests\Laravel\Ownership\Stubs\Models
  */
-class EntityWithDefaultCustomizedOwner extends Model implements HasOwnerContract
+class EntityWithDefaultCustomizedOwner extends Model implements OwnableContract
 {
     use HasOwner;
 
@@ -66,7 +66,7 @@ class EntityWithDefaultCustomizedOwner extends Model implements HasOwnerContract
     /**
      * Get model default owner.
      *
-     * @return \Cog\Ownership\Contracts\CanBeOwner
+     * @return \Cog\Contracts\Laravel\Ownership\CanBeOwner
      */
     public function resolveDefaultOwner()
     {

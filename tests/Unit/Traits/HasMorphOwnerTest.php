@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Tests\Unit\Traits;
+namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
-use Cog\Ownership\Tests\TestCase;
-use Cog\Ownership\Observers\ModelObserver;
-use Cog\Ownership\Tests\Stubs\Models\User;
-use Cog\Ownership\Tests\Stubs\Models\Character;
-use Cog\Ownership\Tests\Stubs\Models\EntityWithMorphOwner;
-use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultMorphOwner;
+use Cog\Tests\Laravel\Ownership\TestCase;
+use Cog\Laravel\Ownership\Observers\ModelObserver;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithMorphOwner;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultMorphOwner;
 
 /**
  * Class HasMorphOwnerTest.
  *
- * @package Cog\Ownership\Tests\Unit\Traits
+ * @package Cog\Tests\Laravel\Ownership\Unit\Traits
  */
 class HasMorphOwnerTest extends TestCase
 {

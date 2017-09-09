@@ -9,20 +9,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Tests\Unit\Traits;
+namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
-use Cog\Ownership\Tests\TestCase;
-use Cog\Ownership\Tests\Stubs\Models\User;
-use Cog\Ownership\Exceptions\InvalidOwnerType;
-use Cog\Ownership\Tests\Stubs\Models\Character;
-use Cog\Ownership\Tests\Stubs\Models\EntityWithOwner;
-use Cog\Ownership\Tests\Stubs\Models\EntityWithDefaultOwner;
+use Cog\Tests\Laravel\Ownership\TestCase;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
+use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidOwnerType;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithOwner;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultOwner;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class HasOwnerTest.
  *
- * @package Cog\Ownership\Tests\Unit\Traits
+ * @package Cog\Tests\Laravel\Ownership\Unit\Traits
  */
 class HasOwnerTest extends TestCase
 {

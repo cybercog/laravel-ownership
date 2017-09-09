@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-ownership` will be documented in this file.
 
+## [4.0.0] - 2017-09-09
+
+### Changed
+
+- Contracts namespace changed from `Cog\Ownership\Contracts` to `Cog\Contracts\Laravel\Ownership`
+- Classes namespace changed from `Cog\Ownership` to `Cog\Laravel\Ownership`
+- `ModelObserver` renamed to `OwnableObserver`
+- `HasOwner` contract renamed to `Ownable`
+
 ## [3.1.0] - 2017-08-30
 
 ### Added

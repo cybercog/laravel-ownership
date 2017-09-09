@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Cog\Ownership\Tests\Stubs\Models\Group;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\Group;
 use Faker\Generator;
 
 /* @var \Illuminate\Database\Eloquent\Factory $factory */

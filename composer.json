@@ -47,18 +47,19 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^1.11",
         "mockery/mockery": "^0.9.8",
-        "orchestra/database": "~3.4.0",
-        "orchestra/testbench": "~3.4.0",
-        "phpunit/phpunit": "^5.7"
+        "orchestra/database": "~3.5.0",
+        "orchestra/testbench": "~3.5.0",
+        "phpunit/phpunit": "^6.0"
     },
     "autoload": {
         "psr-4": {
-            "Cog\\Ownership\\": "src/"
+            "Cog\\Contracts\\Laravel\\Ownership\\": "contracts/",
+            "Cog\\Laravel\\Ownership\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cog\\Ownership\\Tests\\": "tests/"
+            "Cog\\Tests\\Laravel\\Ownership\\": "tests/"
         }
     },
     "scripts": {

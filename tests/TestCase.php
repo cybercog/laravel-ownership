@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Ownership\Tests;
+namespace Cog\Tests\Laravel\Ownership;
 
-use Cog\Ownership\Tests\Stubs\Models\User;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Cog\Ownership\Tests\Stubs\Models\Character;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 /**
  * Class TestCase.
  *
- * @package Cog\Ownership\Tests
+ * @package Cog\Tests\Laravel\Ownership
  */
 abstract class TestCase extends Orchestra
 {
@@ -56,7 +56,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            \Cog\Ownership\Providers\OwnershipServiceProvider::class,
+            \Cog\Laravel\Ownership\Providers\OwnershipServiceProvider::class,
             \Orchestra\Database\ConsoleServiceProvider::class,
         ];
     }
@@ -69,7 +69,6 @@ abstract class TestCase extends Orchestra
     protected function registerMigrations()
     {
         $this->loadMigrationsFrom([
-            //'--database' => 'sqlite',
             '--realpath' => realpath(__DIR__ . '/database/migrations'),
         ]);
     }

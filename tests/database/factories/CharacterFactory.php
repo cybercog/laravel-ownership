@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Cog\Ownership\Tests\Stubs\Models\Character;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
 
 /* @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(Character::class, function (\Faker\Generator $faker) {

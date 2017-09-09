@@ -60,7 +60,7 @@ And then include the service provider within `app/config/app.php`.
 
 ```php
 'providers' => [
-    Cog\Ownership\Providers\OwnershipServiceProvider::class,
+    Cog\Laravel\Ownership\Providers\OwnershipServiceProvider::class,
 ];
 ```
 
@@ -76,14 +76,14 @@ Polymorphic ownership is useful when model can belongs to owners of different ty
 
 ### Prepare ownable model with strict ownership
 
-Use `HasOwner` contract in model which will get ownership behavior and implement it or just use `HasOwner` trait. 
+Use `Ownable` contract in model which will get ownership behavior and implement it or just use `HasOwner` trait. 
 
 ```php
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
-use Cog\Ownership\Traits\HasOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract
+class Article extends Model implements OwnableContract
 {
     use HasOwner;
 }
@@ -106,11 +106,11 @@ By default owner model will be the same as `config('auth.providers.users.model')
 To override default owner model in strict ownership, it's primary key or foreign key extend your ownable model with additional attributes:
 
 ```php
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
-use Cog\Ownership\Traits\HasOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract
+class Article extends Model implements OwnableContract
 {
     use HasOwner;
 
@@ -122,14 +122,14 @@ class Article extends Model implements HasOwnerContract
 
 ### Prepare ownable model with polymorphic ownership
 
-Use `HasOwner` contract in model which will get polymorphic ownership behavior and implement it or just use `HasMorphOwner` trait. 
+Use `Ownable` contract in model which will get polymorphic ownership behavior and implement it or just use `HasMorphOwner` trait. 
 
 ```php
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
-use Cog\Ownership\Traits\HasMorphOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasMorphOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract
+class Article extends Model implements OwnableContract
 {
     use HasMorphOwner;
 }
@@ -249,11 +249,11 @@ Article::whereNotOwnedBy($owner)->get();
 To set currently authenticated user as owner for ownable model create - extend it with attribute `withDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
 
 ```php
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
-use Cog\Ownership\Traits\HasOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract
+class Article extends Model implements OwnableContract
 {
     use HasOwner;
 
@@ -264,11 +264,11 @@ class Article extends Model implements HasOwnerContract
 To override strategy of getting default owner extend ownable model with `resolveDefaultOwner` method:
 
 ```php
-use Cog\Ownership\Contracts\HasOwner as HasOwnerContract;
-use Cog\Ownership\Traits\HasOwner;
+use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements HasOwnerContract
+class Article extends Model implements OwnableContract
 {
     use HasOwner;
 
@@ -277,7 +277,7 @@ class Article extends Model implements HasOwnerContract
     /**
      * Resolve entity default owner.
      * 
-     * @return \Cog\Ownership\Contracts\CanBeOwner|null
+     * @return \Cog\Contracts\Laravel\Ownership\CanBeOwner|null
      */
     public function resolveDefaultOwner()
     {
