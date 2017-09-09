@@ -25,7 +25,7 @@ use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
 trait HasMorphOwner
 {
     /**
-     * @var \Cog\Contracts\Laravel\Ownership\CanBeOwner|null
+     * @var null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
      */
     private $defaultOwner;
 
@@ -72,7 +72,7 @@ trait HasMorphOwner
     /**
      * Get default owner.
      *
-     * @return \Cog\Contracts\Laravel\Ownership\CanBeOwner|null
+     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
      */
     public function defaultOwner()
     {
@@ -82,7 +82,7 @@ trait HasMorphOwner
     /**
      * Set owner as default for entity.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner|null $owner
+     * @param null|\Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
      * @return $this
      */
     public function withDefaultOwner(CanBeOwnerContract $owner = null)
@@ -123,7 +123,7 @@ trait HasMorphOwner
     /**
      * Resolve entity default owner.
      *
-     * @return \Cog\Contracts\Laravel\Ownership\CanBeOwner|null
+     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
      */
     public function resolveDefaultOwner()
     {
