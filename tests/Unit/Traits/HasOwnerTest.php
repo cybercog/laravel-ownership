@@ -11,6 +11,7 @@
 
 namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
+use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Tests\Laravel\Ownership\TestCase;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidOwnerType;
@@ -292,6 +293,49 @@ class HasOwnerTest extends TestCase
 
         $character = factory(Character::class)->create();
         $entity = factory(EntityWithOwner::class)->create();
+
         $entity->changeOwnerTo($character);
+    }
+
+    /** @test */
+    public function it_can_return_true_on_is_owned_by_default_owner()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithOwner::class)->create([
+            'owned_by_id' => $user->getKey(),
+        ]);
+
+        $isOwnedByCurrentUser = $entity->isOwnedByDefaultOwner();
+
+        $this->assertTrue($isOwnedByCurrentUser);
+    }
+
+    /** @test */
+    public function it_can_return_false_on_is_owned_by_default_owner()
+    {
+        $user1 = factory(User::class)->create();
+        $user2 = factory(User::class)->create();
+        $this->actingAs($user1);
+        $entity = factory(EntityWithOwner::class)->create([
+            'owned_by_id' => $user2->getKey(),
+        ]);
+
+        $isNotOwnedByCurrentUser = $entity->isOwnedByDefaultOwner();
+
+        $this->assertFalse($isNotOwnedByCurrentUser);
+    }
+
+    /** @test */
+    public function it_can_throw_an_exception_on_is_owned_by_default_owner_check_if_default_owner_is_null()
+    {
+        $this->expectException(InvalidDefaultOwner::class);
+
+        $user = factory(User::class)->create();
+        $entity = factory(EntityWithOwner::class)->create([
+            'owned_by_id' => $user->getKey(),
+        ]);
+
+        $entity->isOwnedByDefaultOwner();
     }
 }

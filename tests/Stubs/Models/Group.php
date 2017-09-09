@@ -41,6 +41,7 @@ class Group extends Model implements CanBeOwnerContract
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'name',
     ];
 }

@@ -11,6 +11,7 @@
 
 namespace Cog\Laravel\Ownership\Traits;
 
+use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Laravel\Ownership\Observers\OwnableObserver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
@@ -192,6 +193,23 @@ trait HasOwner
     public function isNotOwnedBy(CanBeOwnerContract $owner)
     {
         return !$this->isOwnedBy($owner);
+    }
+
+    /**
+     * Determine if model owned by owner resolved as default.
+     *
+     * @return bool
+     *
+     * @throws \Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner
+     */
+    public function isOwnedByDefaultOwner()
+    {
+        $owner = $this->resolveDefaultOwner();
+        if (!$owner) {
+            throw InvalidDefaultOwner::isNull($this);
+        }
+
+        return $this->isOwnedBy($owner);
     }
 
     /**

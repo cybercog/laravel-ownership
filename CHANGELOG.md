@@ -4,6 +4,10 @@ All notable changes to `laravel-ownership` will be documented in this file.
 
 ## [4.0.0] - 2017-09-09
 
+### Added
+
+- Ownable models got new `isOwnedByDefaultOwner` method which automatically try to resolve current user.
+
 ### Changed
 
 - Contracts namespace changed from `Cog\Ownership\Contracts` to `Cog\Contracts\Laravel\Ownership`

@@ -22,6 +22,7 @@ class CreateGroupTable extends Migration
     {
         Schema::create('group', function (Blueprint $table) {
             $table->increments('gid');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('name');
             $table->timestamps();
         });

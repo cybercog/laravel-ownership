@@ -11,6 +11,7 @@
 
 namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
+use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Tests\Laravel\Ownership\TestCase;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Group;
@@ -250,5 +251,53 @@ class HasCustomizedOwnerTest extends TestCase
         $character = factory(User::class)->create();
         $entity = factory(EntityWithCustomizedOwner::class)->create();
         $entity->changeOwnerTo($character);
+    }
+
+    /** @test */
+    public function it_can_return_true_on_is_owned_by_default_owner()
+    {
+        $user = factory(User::class)->create();
+        $group = factory(Group::class)->create([
+            'user_id' => $user->getKey(),
+        ]);
+        $this->actingAs($user);
+        $entity = factory(EntityWithCustomizedOwner::class)->create([
+            'group_id' => $group->getKey(),
+        ]);
+
+        $isOwnedByCurrentUser = $entity->isOwnedByDefaultOwner();
+
+        $this->assertTrue($isOwnedByCurrentUser);
+    }
+
+    /** @test */
+    public function it_can_return_false_on_is_owned_by_default_owner()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        factory(Group::class)->create([
+            'user_id' => $user->getKey(),
+        ]);
+        $group = factory(Group::class)->create();
+        $entity = factory(EntityWithCustomizedOwner::class)->create([
+            'group_id' => $group->getKey(),
+        ]);
+
+        $isNotOwnedByCurrentUser = $entity->isOwnedByDefaultOwner();
+
+        $this->assertFalse($isNotOwnedByCurrentUser);
+    }
+
+    /** @test */
+    public function it_can_throw_an_exception_on_is_owned_by_default_owner_check_if_default_owner_is_null()
+    {
+        $this->expectException(InvalidDefaultOwner::class);
+
+        $group = factory(Group::class)->create();
+        $entity = factory(EntityWithCustomizedOwner::class)->create([
+            'group_id' => $group->getKey(),
+        ]);
+
+        $entity->isOwnedByDefaultOwner();
     }
 }

@@ -14,6 +14,7 @@ namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
 use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class EntityWithCustomizedOwner.
@@ -64,12 +65,23 @@ class EntityWithCustomizedOwner extends Model implements OwnableContract
     /**
      * Get model default owner.
      *
-     * @return \Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
      */
     public function resolveDefaultOwner()
     {
-        return factory(Group::class)->create([
-            'name' => 'default-group-owner',
-        ]);
+        $user = Auth::user();
+        if (!$user) {
+            return null;
+        }
+
+        $group = Group::where('user_id', $user->getKey())->first();
+        if (!$group) {
+            $group = Group::create([
+                'user_id' => $user->getKey(),
+                'name' => 'default-group-owner',
+            ]);
+        }
+
+        return $group;
     }
 }

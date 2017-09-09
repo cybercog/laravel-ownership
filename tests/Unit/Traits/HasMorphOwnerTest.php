@@ -11,8 +11,8 @@
 
 namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
+use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Tests\Laravel\Ownership\TestCase;
-use Cog\Laravel\Ownership\Observers\ModelObserver;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithMorphOwner;
@@ -25,16 +25,6 @@ use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultMorphOwner;
  */
 class HasMorphOwnerTest extends TestCase
 {
-    /**
-     * Boot the HasOwner trait for a model.
-     *
-     * @return void
-     */
-    public static function bootHasOwner()
-    {
-        static::observe(new ModelObserver);
-    }
-
     /** @test */
     public function it_can_belong_to_owner()
     {
@@ -279,5 +269,50 @@ class HasMorphOwnerTest extends TestCase
         $entity->withoutDefaultOwner()->save();
 
         $this->assertNull($entity->ownedBy);
+    }
+
+    /** @test */
+    public function it_can_return_true_on_is_owned_by_default_owner()
+    {
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $user->getKey(),
+            'owned_by_type' => $user->getMorphClass(),
+        ]);
+
+        $isOwnedByCurrentUser = $entity->isOwnedByDefaultOwner();
+
+        $this->assertTrue($isOwnedByCurrentUser);
+    }
+
+    /** @test */
+    public function it_can_return_false_on_is_owned_by_default_owner()
+    {
+        $user1 = factory(User::class)->create();
+        $user2 = factory(User::class)->create();
+        $this->actingAs($user1);
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $user2->getKey(),
+            'owned_by_type' => $user2->getMorphClass(),
+        ]);
+
+        $isNotOwnedByCurrentUser = $entity->isOwnedByDefaultOwner();
+
+        $this->assertFalse($isNotOwnedByCurrentUser);
+    }
+
+    /** @test */
+    public function it_can_throw_an_exception_on_is_owned_by_default_owner_check_if_default_owner_is_null()
+    {
+        $this->expectException(InvalidDefaultOwner::class);
+
+        $user = factory(User::class)->create();
+        $entity = factory(EntityWithMorphOwner::class)->create([
+            'owned_by_id' => $user->getKey(),
+            'owned_by_type' => $user->getMorphClass(),
+        ]);
+
+        $entity->isOwnedByDefaultOwner();
     }
 }
