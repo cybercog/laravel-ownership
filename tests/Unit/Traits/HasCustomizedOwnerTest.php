@@ -11,11 +11,11 @@
 
 namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
-use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner;
+use Cog\Contracts\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Tests\Laravel\Ownership\TestCase;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Group;
-use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidOwnerType;
+use Cog\Contracts\Ownership\Exceptions\InvalidOwnerType;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithCustomizedOwner;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultCustomizedOwner;
 

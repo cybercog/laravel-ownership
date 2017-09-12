@@ -12,7 +12,7 @@
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
+use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class Character.

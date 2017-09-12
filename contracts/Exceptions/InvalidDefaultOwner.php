@@ -9,22 +9,22 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Contracts\Laravel\Ownership\Exceptions;
+namespace Cog\Contracts\Ownership\Exceptions;
 
-use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableContract;
 use Exception;
 
 /**
  * Class InvalidDefaultOwner.
  *
- * @package Cog\Contracts\Laravel\Ownership\Exceptions
+ * @package Cog\Contracts\Ownership\Exceptions
  */
 class InvalidDefaultOwner extends Exception
 {
     /**
      * Default owner for ownable model is null.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\Ownable $ownable
+     * @param \Cog\Contracts\Ownership\Ownable $ownable
      * @return static
      */
     public static function isNull(OwnableContract $ownable)

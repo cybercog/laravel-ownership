@@ -11,7 +11,7 @@
 
 namespace Cog\Laravel\Ownership\Observers;
 
-use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableContract;
 
 /**
  * Class OwnableObserver.
@@ -23,7 +23,7 @@ class OwnableObserver
     /**
      * Handle the deleted event for the model.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\Ownable $ownable
+     * @param \Cog\Contracts\Ownership\Ownable $ownable
      * @return void
      */
     public function creating(OwnableContract $ownable)

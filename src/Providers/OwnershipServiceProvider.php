@@ -13,7 +13,7 @@ namespace Cog\Laravel\Ownership\Providers;
 
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Support\ServiceProvider;
-use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
+use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class OwnershipServiceProvider.

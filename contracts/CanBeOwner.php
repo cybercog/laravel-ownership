@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Contracts\Laravel\Ownership;
+namespace Cog\Contracts\Ownership;
 
 /**
  * Interface CanBeOwner.
  *
- * @package Cog\Contracts\Laravel\Ownership
+ * @package Cog\Contracts\Ownership
  */
 interface CanBeOwner
 {

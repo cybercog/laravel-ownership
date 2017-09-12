@@ -53,7 +53,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cog\\Contracts\\Laravel\\Ownership\\": "contracts/",
+            "Cog\\Contracts\\Ownership\\": "contracts/",
             "Cog\\Laravel\\Ownership\\": "src/"
         }
     },
@@ -71,7 +71,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Cog\\Ownership\\Providers\\OwnershipServiceProvider"
+                "Cog\\Laravel\\Ownership\\Providers\\OwnershipServiceProvider"
             ]
         }
     },

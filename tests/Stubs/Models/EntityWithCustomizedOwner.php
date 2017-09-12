@@ -11,7 +11,7 @@
 
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
-use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableContract;
 use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -65,7 +65,7 @@ class EntityWithCustomizedOwner extends Model implements OwnableContract
     /**
      * Get model default owner.
      *
-     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return null|\Cog\Contracts\Ownership\CanBeOwner
      */
     public function resolveDefaultOwner()
     {
