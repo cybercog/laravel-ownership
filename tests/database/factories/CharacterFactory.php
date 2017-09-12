@@ -10,9 +10,10 @@
  */
 
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
+use Faker\Generator;
 
 /* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(Character::class, function (\Faker\Generator $faker) {
+$factory->define(Character::class, function (Generator $faker) {
     return [
         'name' => $faker->name,
     ];

@@ -11,7 +11,7 @@
 
 namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
-use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner;
+use Cog\Contracts\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Tests\Laravel\Ownership\TestCase;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;

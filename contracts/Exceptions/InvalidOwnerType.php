@@ -9,24 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Contracts\Laravel\Ownership\Exceptions;
+namespace Cog\Contracts\Ownership\Exceptions;
 
-use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
 use Exception;
-use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class InvalidOwnerType.
  *
- * @package Cog\Contracts\Laravel\Ownership\Exceptions
+ * @package Cog\Contracts\Ownership\Exceptions
  */
 class InvalidOwnerType extends Exception
 {
     /**
      * Owner of the provided type is not allowed to own this model.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\Ownable $ownable
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\Ownable $ownable
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return static
      */
     public static function notAllowed(OwnableContract $ownable, CanBeOwnerContract $owner)

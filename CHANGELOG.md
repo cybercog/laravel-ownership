@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-ownership` will be documented in this file.
 
+## [5.0.0] - 2017-09-13
+
+### Changed
+
+- Contracts namespace changed from `Cog\Contracts\Laravel\Ownership` to `Cog\Contracts\Ownership`
+
+### Fixed
+
+- Service Provider auto-discovery
+
 ## [4.0.0] - 2017-09-09
 
 ### Added

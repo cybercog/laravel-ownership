@@ -11,7 +11,7 @@
 
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
-use Cog\Contracts\Laravel\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableContract;
 use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 

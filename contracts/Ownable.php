@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Cog\Contracts\Laravel\Ownership;
+namespace Cog\Contracts\Ownership;
 
+use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
 use Illuminate\Database\Eloquent\Builder;
-use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Interface Ownable.
  *
- * @package Cog\Contracts\Laravel\Ownership
+ * @package Cog\Contracts\Ownership
  */
 interface Ownable
 {
@@ -38,29 +38,29 @@ interface Ownable
     /**
      * Get the model owner.
      *
-     * @return \Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return \Cog\Contracts\Ownership\CanBeOwner
      */
     public function getOwner();
 
     /**
      * Get default owner.
      *
-     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return null|\Cog\Contracts\Ownership\CanBeOwner
      */
     public function defaultOwner();
 
     /**
      * Set owner as default for entity.
      *
-     * @param null|\Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
-     * @return \Cog\Contracts\Laravel\Ownership\Ownable
+     * @param null|\Cog\Contracts\Ownership\CanBeOwner $owner
+     * @return \Cog\Contracts\Ownership\Ownable
      */
     public function withDefaultOwner(CanBeOwnerContract $owner = null);
 
     /**
      * Remove default owner for entity.
      *
-     * @return \Cog\Contracts\Laravel\Ownership\Ownable
+     * @return \Cog\Contracts\Ownership\Ownable
      */
     public function withoutDefaultOwner();
 
@@ -74,22 +74,22 @@ interface Ownable
     /**
      * Resolve entity default owner.
      *
-     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return null|\Cog\Contracts\Ownership\CanBeOwner
      */
     public function resolveDefaultOwner();
 
     /**
      * Changes owner of the model.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
-     * @return \Cog\Contracts\Laravel\Ownership\Ownable
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
+     * @return \Cog\Contracts\Ownership\Ownable
      */
     public function changeOwnerTo(CanBeOwnerContract $owner);
 
     /**
      * Abandons owner of the model.
      *
-     * @return \Cog\Contracts\Laravel\Ownership\Ownable
+     * @return \Cog\Contracts\Ownership\Ownable
      */
     public function abandonOwner();
 
@@ -103,7 +103,7 @@ interface Ownable
     /**
      * Checks if model owned by given owner.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return bool
      */
     public function isOwnedBy(CanBeOwnerContract $owner);
@@ -111,7 +111,7 @@ interface Ownable
     /**
      * Checks if model not owned by given owner.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return bool
      */
     public function isNotOwnedBy(CanBeOwnerContract $owner);
@@ -120,7 +120,7 @@ interface Ownable
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereOwnedBy(Builder $query, CanBeOwnerContract $owner);
@@ -129,7 +129,7 @@ interface Ownable
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereNotOwnedBy(Builder $query, CanBeOwnerContract $owner);

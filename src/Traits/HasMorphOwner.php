@@ -11,11 +11,11 @@
 
 namespace Cog\Laravel\Ownership\Traits;
 
-use Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner;
+use Cog\Contracts\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Laravel\Ownership\Observers\OwnableObserver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
-use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
+use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
 
 /**
  * Class HasMorphOwner.
@@ -25,7 +25,7 @@ use Cog\Contracts\Laravel\Ownership\CanBeOwner as CanBeOwnerContract;
 trait HasMorphOwner
 {
     /**
-     * @var null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @var null|\Cog\Contracts\Ownership\CanBeOwner
      */
     private $defaultOwner;
 
@@ -62,7 +62,7 @@ trait HasMorphOwner
     /**
      * Get the model owner.
      *
-     * @return \Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return \Cog\Contracts\Ownership\CanBeOwner
      */
     public function getOwner()
     {
@@ -72,7 +72,7 @@ trait HasMorphOwner
     /**
      * Get default owner.
      *
-     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return null|\Cog\Contracts\Ownership\CanBeOwner
      */
     public function defaultOwner()
     {
@@ -82,7 +82,7 @@ trait HasMorphOwner
     /**
      * Set owner as default for entity.
      *
-     * @param null|\Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param null|\Cog\Contracts\Ownership\CanBeOwner $owner
      * @return $this
      */
     public function withDefaultOwner(CanBeOwnerContract $owner = null)
@@ -123,7 +123,7 @@ trait HasMorphOwner
     /**
      * Resolve entity default owner.
      *
-     * @return null|\Cog\Contracts\Laravel\Ownership\CanBeOwner
+     * @return null|\Cog\Contracts\Ownership\CanBeOwner
      */
     public function resolveDefaultOwner()
     {
@@ -133,7 +133,7 @@ trait HasMorphOwner
     /**
      * Changes owner of the model.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return $this
      */
     public function changeOwnerTo(CanBeOwnerContract $owner)
@@ -167,7 +167,7 @@ trait HasMorphOwner
     /**
      * Checks if model owned by given owner.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return bool
      */
     public function isOwnedBy(CanBeOwnerContract $owner)
@@ -182,7 +182,7 @@ trait HasMorphOwner
     /**
      * Checks if model not owned by given owner.
      *
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return bool
      */
     public function isNotOwnedBy(CanBeOwnerContract $owner)
@@ -195,7 +195,7 @@ trait HasMorphOwner
      *
      * @return bool
      *
-     * @throws \Cog\Contracts\Laravel\Ownership\Exceptions\InvalidDefaultOwner
+     * @throws \Cog\Contracts\Ownership\Exceptions\InvalidDefaultOwner
      */
     public function isOwnedByDefaultOwner()
     {
@@ -211,7 +211,7 @@ trait HasMorphOwner
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereOwnedBy(Builder $query, CanBeOwnerContract $owner)
@@ -226,7 +226,7 @@ trait HasMorphOwner
      * Scope a query to only include models by owner.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Cog\Contracts\Laravel\Ownership\CanBeOwner $owner
+     * @param \Cog\Contracts\Ownership\CanBeOwner $owner
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWhereNotOwnedBy(Builder $query, CanBeOwnerContract $owner)
