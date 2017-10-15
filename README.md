@@ -53,7 +53,7 @@ Laravel Ownership simplify management of eloquent model's owner. Group can be an
 First, pull in the package through Composer.
 
 ```sh
-composer require cybercog/laravel-ownership
+$ composer require cybercog/laravel-ownership
 ```
 
 And then include the service provider within `app/config/app.php`.
@@ -317,7 +317,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 Run the tests with:
 
 ```sh
-vendor/bin/phpunit
+$ vendor/bin/phpunit
 ```
 
 ## Security
