@@ -11,25 +11,25 @@
 
 Laravel Ownership simplify management of eloquent model's owner. Group can be an owner of event, user can be an owner of chat room, organization can own licenses. It can be used for many cases not limited by authorship. Make any model as owner and create ownable models in a minutes!
  
- ## Contents
+## Contents
  
- - [Features](#features)
- - [Installation](#installation)
- - [Usage](#usage)
-     - [Prepare ownable model with strict ownership](#prepare-ownable-model-with-strict-ownership)
-     - [Prepare ownable model with polymorphic ownership](#prepare-ownable-model-with-polymorphic-ownership)
-     - [Available methods](#available-methods)
-     - [Scopes](#scopes)
-     - [Set authenticated user as owner automatically](#set-authenticated-user-as-owner-automatically)
- - [Changelog](#changelog)
- - [Upgrading](#upgrading)
- - [Contributing](#contributing)
- - [Testing](#testing)
- - [Security](#security)
- - [Credits](#credits)
- - [Alternatives](#alternatives)
- - [License](#license)
- - [About CyberCog](#about-cybercog)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Prepare ownable model with strict ownership](#prepare-ownable-model-with-strict-ownership)
+    - [Prepare ownable model with polymorphic ownership](#prepare-ownable-model-with-polymorphic-ownership)
+    - [Available methods](#available-methods)
+    - [Scopes](#scopes)
+    - [Set authenticated user as owner automatically](#set-authenticated-user-as-owner-automatically)
+- [Changelog](#changelog)
+- [Upgrading](#upgrading)
+- [Contributing](#contributing)
+- [Testing](#testing)
+- [Security](#security)
+- [Credits](#credits)
+- [Alternatives](#alternatives)
+- [License](#license)
+- [About CyberCog](#about-cybercog)
 
 ## Features
 
