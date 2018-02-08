@@ -21,7 +21,7 @@ Laravel Ownership simplify management of eloquent model's owner. Group can be an
      - [Available methods](#available-methods)
      - [Scopes](#scopes)
      - [Set authenticated user as owner automatically](#set-authenticated-user-as-owner-automatically)
- - [Change log](#change-log)
+ - [Changelog](#changelog)
  - [Upgrading](#upgrading)
  - [Contributing](#contributing)
  - [Testing](#testing)
@@ -286,7 +286,7 @@ class Article extends Model implements OwnableContract
 }
 ```
 
-## Change log
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
@@ -312,9 +312,8 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## Credits
 
-|  | @mention |
-|---|---|
-| ![@a-komarev](https://avatars2.githubusercontent.com/u/1849174?s=64) | [@a-komarev](https://github.com/a-komarev) |
+| <a href="https://github.com/a-komarev">![@a-komarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> |  
+| :---: |
 
 [Laravel Ownership contributors list](../../contributors)
 
