@@ -10,9 +10,9 @@
 ## Introduction
 
 Laravel Ownership simplify management of eloquent model's owner. Group can be an owner of event, user can be an owner of chat room, organization can own licenses. It can be used for many cases not limited by authorship. Make any model as owner and create ownable models in a minutes!
- 
+
 ## Contents
- 
+
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -70,13 +70,27 @@ Laravel Ownership allows model to have strict owner model type (`HasOwner` trait
 
 Strict ownership is useful when model can belongs to only one model type. Attempt to set owner of not defined model type will throw an exception `InvalidOwnerType`.
 *Example: Only users allowed to create posts.*
- 
+
 Polymorphic ownership is useful when model can belongs to owners of different types.
 *Example: Users and Organizations can upload applications to marketplace.*
 
+### Prepare owner model
+
+At the owner model use `CanBeOwner` contract and implement it:
+
+```php
+use Cog\Contracts\Ownership\CanBeOwner;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements CanBeOwner
+{
+    // ...
+}
+```
+
 ### Prepare ownable model with strict ownership
 
-Use `Ownable` contract in model which will get ownership behavior and implement it or just use `HasOwner` trait. 
+Use `Ownable` contract in model which will get ownership behavior and implement it or just use `HasOwner` trait.
 
 ```php
 use Cog\Contracts\Ownership\Ownable as OwnableContract;
@@ -94,7 +108,7 @@ Ownable model with strict ownership must have in database additional nullable co
 ```php
 Schema::table('articles', function (Blueprint $table) {
     $table->integer('owned_by_id')->unsigned()->nullable();
-    
+
     $table->index('owned_by_id');
 });
 ```
@@ -122,7 +136,7 @@ class Article extends Model implements OwnableContract
 
 ### Prepare ownable model with polymorphic ownership
 
-Use `Ownable` contract in model which will get polymorphic ownership behavior and implement it or just use `HasMorphOwner` trait. 
+Use `Ownable` contract in model which will get polymorphic ownership behavior and implement it or just use `HasMorphOwner` trait.
 
 ```php
 use Cog\Contracts\Ownership\Ownable as OwnableContract;
@@ -137,7 +151,7 @@ class Article extends Model implements OwnableContract
 
 Ownable model with polymorphic ownership must have in database additional nullable columns to store owner relation:
 
-**Laravel 5.3.29 and newer**
+#### Laravel 5.3.29 and newer
 
 ```php
 Schema::table('articles', function (Blueprint $table) {
@@ -145,13 +159,13 @@ Schema::table('articles', function (Blueprint $table) {
 });
 ```
 
-**Laravel 5.3.28 and older**
+#### Laravel 5.3.28 and older
 
 ```php
 Schema::table('articles', function (Blueprint $table) {
     $table->integer('owned_by_id')->unsigned()->nullable();
     $table->string('owned_by_type')->nullable();
-    
+
     $table->index([
         'owned_by_id',
         'owned_by_type',
@@ -273,7 +287,7 @@ class Article extends Model implements OwnableContract
     use HasOwner;
 
     public $withDefaultOwnerOnCreate = true;
-    
+
     /**
      * Resolve entity default owner.
      * 
