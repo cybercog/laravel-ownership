@@ -339,7 +339,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## License
 
-- `Laravel Ownership` package is open-sourced software licensed under the [MIT license](LICENSE).
+- `Laravel Ownership` package is open-sourced software licensed under the [MIT license](LICENSE) by Anton Komarev.
 - `Intellectual Property` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Arthur Shlain.
 - `Fat Boss` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay. 
 
