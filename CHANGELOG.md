@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-ownership` will be documented in this file.
 
+## [5.2.0] - 2018-09-09
+
+### Added
+
+- ([#19](https://github.com/cybercog/laravel-ownership/pull/19)) Laravel 5.7 support
+
 ## [5.1.0] - 2018-02-08
 
 ### Added
@@ -81,6 +87,7 @@ All notable changes to `laravel-ownership` will be documented in this file.
 
 - Initial release
 
+[5.2.0]: https://github.com/cybercog/laravel-ownership/compare/5.1.0...5.2.0
 [5.1.0]: https://github.com/cybercog/laravel-ownership/compare/5.0.0...5.1.0
 [5.0.0]: https://github.com/cybercog/laravel-ownership/compare/4.0.0...5.0.0
 [4.0.0]: https://github.com/cybercog/laravel-ownership/compare/3.1.0...4.0.0
