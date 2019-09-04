@@ -1,3 +1,5 @@
+**THIS PACKAGE IS NOT MAINTAINED ANYMORE**
+
 ![cog-laravel-ownership-3](https://cloud.githubusercontent.com/assets/1849174/21737911/ee344682-d48e-11e6-9ace-eea37026ae6d.png)
 
 <p align="center">
