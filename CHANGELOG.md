@@ -1,12 +1,14 @@
 # Changelog
 
-All notable changes to `laravel-ownership` will be documented in this file.
+All notable changes to `cybercog/laravel-ownership` will be documented in this file.
+
+## [Unreleased]
 
 ## [5.2.0] - 2018-09-09
 
 ### Added
 
-- ([#19](https://github.com/cybercog/laravel-ownership/pull/19)) Laravel 5.7 support
+- ([#19]) Laravel 5.7 support
 
 ## [5.1.0] - 2018-02-08
 
@@ -87,6 +89,7 @@ All notable changes to `laravel-ownership` will be documented in this file.
 
 - Initial release
 
+[Unreleased]: https://github.com/cybercog/laravel-ownership/compare/5.2.0...master
 [5.2.0]: https://github.com/cybercog/laravel-ownership/compare/5.1.0...5.2.0
 [5.1.0]: https://github.com/cybercog/laravel-ownership/compare/5.0.0...5.1.0
 [5.0.0]: https://github.com/cybercog/laravel-ownership/compare/4.0.0...5.0.0
@@ -97,3 +100,5 @@ All notable changes to `laravel-ownership` will be documented in this file.
 [2.1.0]: https://github.com/cybercog/laravel-ownership/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/cybercog/laravel-ownership/compare/1.0.0...2.0.0
 [Upgrade instructions]: UPGRADING.md
+
+[#19]: https://github.com/cybercog/laravel-ownership/pull/19
