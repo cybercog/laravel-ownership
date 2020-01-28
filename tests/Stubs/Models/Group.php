@@ -11,8 +11,8 @@
 
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Group.

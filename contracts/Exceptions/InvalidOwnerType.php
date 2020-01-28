@@ -11,8 +11,8 @@
 
 namespace Cog\Contracts\Ownership\Exceptions;
 
-use Cog\Contracts\Ownership\Ownable as OwnableContract;
 use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
+use Cog\Contracts\Ownership\Ownable as OwnableContract;
 use Exception;
 
 /**

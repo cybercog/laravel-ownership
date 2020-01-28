@@ -12,12 +12,12 @@
 namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
 use Cog\Contracts\Ownership\Exceptions\InvalidDefaultOwner;
-use Cog\Tests\Laravel\Ownership\TestCase;
-use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Cog\Contracts\Ownership\Exceptions\InvalidOwnerType;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
-use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithOwner;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultOwner;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithOwner;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
+use Cog\Tests\Laravel\Ownership\TestCase;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**

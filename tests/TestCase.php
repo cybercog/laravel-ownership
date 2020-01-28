@@ -11,10 +11,10 @@
 
 namespace Cog\Tests\Laravel\Ownership;
 
-use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
  * Class TestCase.

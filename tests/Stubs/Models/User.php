@@ -11,8 +11,8 @@
 
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User.

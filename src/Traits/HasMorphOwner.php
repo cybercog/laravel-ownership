@@ -11,11 +11,11 @@
 
 namespace Cog\Laravel\Ownership\Traits;
 
+use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
 use Cog\Contracts\Ownership\Exceptions\InvalidDefaultOwner;
 use Cog\Laravel\Ownership\Observers\OwnableObserver;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
-use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class HasMorphOwner.

@@ -12,11 +12,11 @@
 namespace Cog\Tests\Laravel\Ownership\Unit\Traits;
 
 use Cog\Contracts\Ownership\Exceptions\InvalidDefaultOwner;
-use Cog\Tests\Laravel\Ownership\TestCase;
-use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
-use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithMorphOwner;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultMorphOwner;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithMorphOwner;
+use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
+use Cog\Tests\Laravel\Ownership\TestCase;
 
 /**
  * Class HasMorphOwnerTest.
