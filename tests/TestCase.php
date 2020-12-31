@@ -26,7 +26,7 @@ abstract class TestCase extends Orchestra
     /**
      * Actions to be performed on PHPUnit start.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -42,7 +42,7 @@ abstract class TestCase extends Orchestra
      * @param \Illuminate\Foundation\Application $app
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $this->setDefaultUserModel($app);
     }
@@ -53,7 +53,7 @@ abstract class TestCase extends Orchestra
      * @param \Illuminate\Foundation\Application $app
      * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             \Cog\Laravel\Ownership\Providers\OwnershipServiceProvider::class,
@@ -66,7 +66,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function registerMigrations()
+    protected function registerMigrations(): void
     {
         $this->loadMigrationsFrom([
             '--realpath' => realpath(__DIR__ . '/database/migrations'),
@@ -78,7 +78,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function migrateUnitTestTables()
+    protected function migrateUnitTestTables(): void
     {
         $this->artisan('migrate');
     }
@@ -88,7 +88,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    private function registerPackageFactories()
+    private function registerPackageFactories(): void
     {
         $pathToFactories = realpath(__DIR__ . '/database/factories');
         $this->withFactories($pathToFactories);
@@ -100,7 +100,7 @@ abstract class TestCase extends Orchestra
      * @param $app
      * @return void
      */
-    private function setDefaultUserModel($app)
+    private function setDefaultUserModel($app): void
     {
         $app['config']->set('auth.providers.users.model', User::class);
     }
@@ -110,7 +110,7 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    protected function registerTestMorphMaps()
+    protected function registerTestMorphMaps(): void
     {
         Relation::morphMap([
             'character' => Character::class,

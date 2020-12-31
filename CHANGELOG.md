@@ -4,6 +4,20 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 
 ## [Unreleased]
 
+## [5.3.0] - 2020-12-31
+
+### Added
+
+- ([#22]) Added Laravel 6.x support
+- ([#22]) Added Laravel 7.x support
+- ([#22]) Added Laravel 8.x support
+- ([#23]) Added PHP 8.x support
+
+### Removed
+
+- ([#23]) Dropped PHP 5.6 support
+- ([#23]) Dropped PHP 7.0 support
+
 ## [5.2.0] - 2018-09-09
 
 ### Added
@@ -101,4 +115,6 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 [2.0.0]: https://github.com/cybercog/laravel-ownership/compare/1.0.0...2.0.0
 [Upgrade instructions]: UPGRADING.md
 
+[#23]: https://github.com/cybercog/laravel-ownership/pull/23
+[#22]: https://github.com/cybercog/laravel-ownership/pull/22
 [#19]: https://github.com/cybercog/laravel-ownership/pull/19
