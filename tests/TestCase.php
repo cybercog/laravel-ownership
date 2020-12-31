@@ -11,9 +11,12 @@
 
 namespace Cog\Tests\Laravel\Ownership;
 
+use Cog\Laravel\Ownership\Providers\OwnershipServiceProvider;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Foundation\Application;
+use Orchestra\Database\ConsoleServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
@@ -34,30 +37,20 @@ abstract class TestCase extends Orchestra
         $this->migrateUnitTestTables();
         $this->registerPackageFactories();
         $this->registerTestMorphMaps();
-    }
-
-    /**
-     * Define environment setup.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     * @return void
-     */
-    protected function getEnvironmentSetUp($app): void
-    {
-        $this->setDefaultUserModel($app);
+        $this->setDefaultUserModel();
     }
 
     /**
      * Load package service provider.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      * @return array
      */
     protected function getPackageProviders($app): array
     {
         return [
-            \Cog\Laravel\Ownership\Providers\OwnershipServiceProvider::class,
-            \Orchestra\Database\ConsoleServiceProvider::class,
+            OwnershipServiceProvider::class,
+            ConsoleServiceProvider::class,
         ];
     }
 
@@ -68,9 +61,7 @@ abstract class TestCase extends Orchestra
      */
     protected function registerMigrations(): void
     {
-        $this->loadMigrationsFrom([
-            '--realpath' => realpath(__DIR__ . '/database/migrations'),
-        ]);
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
     }
 
     /**
@@ -80,7 +71,7 @@ abstract class TestCase extends Orchestra
      */
     protected function migrateUnitTestTables(): void
     {
-        $this->artisan('migrate');
+        $this->artisan('migrate', ['--database' => 'sqlite'])->run();
     }
 
     /**
@@ -90,19 +81,19 @@ abstract class TestCase extends Orchestra
      */
     private function registerPackageFactories(): void
     {
-        $pathToFactories = realpath(__DIR__ . '/database/factories');
-        $this->withFactories($pathToFactories);
+        $this->withFactories(__DIR__ . '/database/factories');
     }
 
     /**
      * Set default user model used by tests.
      *
-     * @param $app
      * @return void
      */
-    private function setDefaultUserModel($app): void
+    private function setDefaultUserModel(): void
     {
-        $app['config']->set('auth.providers.users.model', User::class);
+        $this->app
+            ->make('config')
+            ->set('auth.providers.users.model', User::class);
     }
 
     /**
