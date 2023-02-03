@@ -40,7 +40,7 @@
         "docs": "https://github.com/cybercog/laravel-ownership/wiki"
     },
     "require": {
-        "php": "^7.1.3|^8.0",
+        "php": "^7.1.3|^8.0|^8.1",
         "illuminate/database": "^5.2|^6.0|^7.0|^8.0|^9.0",
         "illuminate/support": "^5.2|^6.0|^7.0|^8.0|^9.0"
     },
