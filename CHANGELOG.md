@@ -12,17 +12,17 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 
 ### Removed
 
-- ([#26]) Dropped PHP 7.x support
-- ([#26]) Dropped Laravel 5.2 support
-- ([#26]) Dropped Laravel 5.3 support
-- ([#26]) Dropped Laravel 5.4 support
-- ([#26]) Dropped Laravel 5.5 support
-- ([#26]) Dropped Laravel 5.6 support
-- ([#26]) Dropped Laravel 5.7 support
-- ([#26]) Dropped Laravel 5.8 support
-- ([#26]) Dropped Laravel 6 support
-- ([#26]) Dropped Laravel 7 support
-- ([#26]) Dropped Laravel 8 support
+- ([#27]) Dropped PHP 7.x support
+- ([#27]) Dropped Laravel 5.2 support
+- ([#27]) Dropped Laravel 5.3 support
+- ([#27]) Dropped Laravel 5.4 support
+- ([#27]) Dropped Laravel 5.5 support
+- ([#27]) Dropped Laravel 5.6 support
+- ([#27]) Dropped Laravel 5.7 support
+- ([#27]) Dropped Laravel 5.8 support
+- ([#27]) Dropped Laravel 6 support
+- ([#27]) Dropped Laravel 7 support
+- ([#27]) Dropped Laravel 8 support
 
 ## [5.3.0] - 2020-12-31
 
@@ -136,6 +136,7 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 [2.0.0]: https://github.com/cybercog/laravel-ownership/compare/1.0.0...2.0.0
 [Upgrade instructions]: UPGRADING.md
 
+[#27]: https://github.com/cybercog/laravel-ownership/pull/27
 [#25]: https://github.com/cybercog/laravel-ownership/pull/25
 [#23]: https://github.com/cybercog/laravel-ownership/pull/23
 [#22]: https://github.com/cybercog/laravel-ownership/pull/22
