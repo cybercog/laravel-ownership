@@ -95,11 +95,11 @@ class User extends Authenticatable implements CanBeOwner
 Use `Ownable` contract in model which will get ownership behavior and implement it or just use `HasOwner` trait.
 
 ```php
-use Cog\Contracts\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableInterface;
 use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements OwnableContract
+class Article extends Model implements OwnableInterface
 {
     use HasOwner;
 }
@@ -122,11 +122,11 @@ By default owner model will be the same as `config('auth.providers.users.model')
 To override default owner model in strict ownership, it's primary key or foreign key extend your ownable model with additional attributes:
 
 ```php
-use Cog\Contracts\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableInterface;
 use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements OwnableContract
+class Article extends Model implements OwnableInterface
 {
     use HasOwner;
 
@@ -141,11 +141,11 @@ class Article extends Model implements OwnableContract
 Use `Ownable` contract in model which will get polymorphic ownership behavior and implement it or just use `HasMorphOwner` trait.
 
 ```php
-use Cog\Contracts\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableInterface;
 use Cog\Laravel\Ownership\Traits\HasMorphOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements OwnableContract
+class Article extends Model implements OwnableInterface
 {
     use HasMorphOwner;
 }
@@ -265,11 +265,11 @@ Article::whereNotOwnedBy($owner)->get();
 To set currently authenticated user as owner for ownable model create - extend it with attribute `withDefaultOwnerOnCreate`. It works for both strict and polymorphic ownership behavior.
 
 ```php
-use Cog\Contracts\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableInterface;
 use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements OwnableContract
+class Article extends Model implements OwnableInterface
 {
     use HasOwner;
 
@@ -280,11 +280,11 @@ class Article extends Model implements OwnableContract
 To override strategy of getting default owner extend ownable model with `resolveDefaultOwner` method:
 
 ```php
-use Cog\Contracts\Ownership\Ownable as OwnableContract;
+use Cog\Contracts\Ownership\Ownable as OwnableInterface;
 use Cog\Laravel\Ownership\Traits\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model implements OwnableContract
+class Article extends Model implements OwnableInterface
 {
     use HasOwner;
 
@@ -293,7 +293,7 @@ class Article extends Model implements OwnableContract
     /**
      * Resolve entity default owner.
      * 
-     * @return null|\Cog\Contracts\Ownership\CanBeOwner
+     * @return \Cog\Contracts\Ownership\CanBeOwner|null
      */
     public function resolveDefaultOwner()
     {
@@ -328,8 +328,8 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## Credits
 
-| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> |  
-| :---: |
+| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/soap">![@soap](https://avatars.githubusercontent.com/u/1073690?s=110)<br />Prasit Gebsaap</a> |
+| :---: |:---------------------------------------------------------------------------------------------------------------------------------:|
 
 [Laravel Ownership contributors list](../../contributors)
 
