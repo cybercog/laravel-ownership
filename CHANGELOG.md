@@ -4,25 +4,6 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 
 ## [Unreleased]
 
-### Added
-
-- ([#25]) Added Laravel 10 support
-- ([#86]) Added Laravel 10 support
-
-### Removed
-
-- ([#89]) Dropped PHP 7.x support
-- ([#89]) Dropped Laravel 5.2 support
-- ([#89]) Dropped Laravel 5.3 support
-- ([#89]) Dropped Laravel 5.4 support
-- ([#89]) Dropped Laravel 5.5 support
-- ([#89]) Dropped Laravel 5.6 support
-- ([#89]) Dropped Laravel 5.7 support
-- ([#89]) Dropped Laravel 5.8 support
-- ([#89]) Dropped Laravel 6 support
-- ([#89]) Dropped Laravel 7 support
-- ([#89]) Dropped Laravel 8 support
-
 ## [5.3.0] - 2020-12-31
 
 ### Added
