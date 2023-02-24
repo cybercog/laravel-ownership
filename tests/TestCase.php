@@ -16,7 +16,6 @@ use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Application;
-use Orchestra\Database\ConsoleServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
@@ -50,7 +49,6 @@ abstract class TestCase extends Orchestra
     {
         return [
             OwnershipServiceProvider::class,
-            ConsoleServiceProvider::class,
         ];
     }
 
