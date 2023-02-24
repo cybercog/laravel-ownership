@@ -79,10 +79,10 @@ Polymorphic ownership is useful when model can belongs to owners of different ty
 At the owner model use `CanBeOwner` contract and implement it:
 
 ```php
-use Cog\Contracts\Ownership\CanBeOwner;
+use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerInterface;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements CanBeOwner
+class User extends Authenticatable implements CanBeOwnerInterface
 {
     // ...
 }
@@ -151,25 +151,9 @@ class Article extends Model implements OwnableInterface
 
 Ownable model with polymorphic ownership must have in database additional nullable columns to store owner relation:
 
-#### Laravel 5.3.29 and newer
-
 ```php
 Schema::table('articles', function (Blueprint $table) {
     $table->nullableMorphs('owned_by');
-});
-```
-
-#### Laravel 5.3.28 and older
-
-```php
-Schema::table('articles', function (Blueprint $table) {
-    $table->integer('owned_by_id')->unsigned()->nullable();
-    $table->string('owned_by_type')->nullable();
-
-    $table->index([
-        'owned_by_id',
-        'owned_by_type',
-    ]);
 });
 ```
 
