@@ -4,6 +4,12 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 
 ## [Unreleased]
 
+## [5.5.0] - 2023-02-24
+
+### Added
+
+- ([#28]) Added Laravel 10 support
+
 ## [5.4.0] - 2023-02-22
 
 ### Added
@@ -123,7 +129,8 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 
 - Initial release
 
-[Unreleased]: https://github.com/cybercog/laravel-ownership/compare/5.4.0...master
+[Unreleased]: https://github.com/cybercog/laravel-ownership/compare/5.5.0...master
+[5.5.0]: https://github.com/cybercog/laravel-ownership/compare/5.4.0...5.5.0
 [5.4.0]: https://github.com/cybercog/laravel-ownership/compare/5.3.0...5.4.0
 [5.3.0]: https://github.com/cybercog/laravel-ownership/compare/5.2.0...5.3.0
 [5.2.0]: https://github.com/cybercog/laravel-ownership/compare/5.1.0...5.2.0
@@ -137,6 +144,7 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 [2.0.0]: https://github.com/cybercog/laravel-ownership/compare/1.0.0...2.0.0
 [Upgrade instructions]: UPGRADING.md
 
+[#28]: https://github.com/cybercog/laravel-ownership/pull/28
 [#27]: https://github.com/cybercog/laravel-ownership/pull/27
 [#25]: https://github.com/cybercog/laravel-ownership/pull/25
 [#23]: https://github.com/cybercog/laravel-ownership/pull/23
