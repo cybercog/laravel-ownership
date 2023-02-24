@@ -1,7 +1,7 @@
 ![cog-laravel-ownership](https://cloud.githubusercontent.com/assets/1849174/21737911/ee344682-d48e-11e6-9ace-eea37026ae6d.png)
 
 <p align="center">
-<a href="https://travis-ci.org/cybercog/laravel-ownership"><img src="https://img.shields.io/travis/cybercog/laravel-ownership/master.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://github.com/cybercog/laravel-ownership/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/cybercog/laravel-ownership/tests.yml?style=flat-square" alt="Build"></a>
 <a href="https://styleci.io/repos/76651386"><img src="https://styleci.io/repos/76651386/shield" alt="StyleCI"></a>
 <a href="https://github.com/cybercog/laravel-ownership/releases"><img src="https://img.shields.io/github/release/cybercog/laravel-ownership.svg?style=flat-square" alt="Releases"></a>
 <a href="https://github.com/cybercog/laravel-ownership/blob/master/LICENSE"><img src="https://img.shields.io/github/license/cybercog/laravel-ownership.svg?style=flat-square" alt="License"></a>
@@ -9,7 +9,10 @@
 
 ## Introduction
 
-Laravel Ownership simplify management of eloquent model's owner. Group can be an owner of event, user can be an owner of chat room, organization can own licenses. It can be used for many cases not limited by authorship. Make any model as owner and create ownable models in a minutes!
+Laravel Ownership simplify management of eloquent model's owner.
+Group can be an owner of event, user can be an owner of chat room, organization can own licenses.
+It can be used for many cases not limited by authorship.
+Make any model as owner and create ownable models in a minutes!
 
 ## Contents
 
@@ -68,10 +71,10 @@ And then include the service provider within `app/config/app.php`.
 
 Laravel Ownership allows model to have strict owner model type (`HasOwner` trait) or use polymorphic relation (`HasMorphOwner` trait).
 
-Strict ownership is useful when model can belongs to only one model type. Attempt to set owner of not defined model type will throw an exception `InvalidOwnerType`.
+Strict ownership is useful when model can belong to only one model type. Attempt to set owner of not defined model type will throw an exception `InvalidOwnerType`.
 *Example: Only users allowed to create posts.*
 
-Polymorphic ownership is useful when model can belongs to owners of different types.
+Polymorphic ownership is useful when model can belong to owners of different types.
 *Example: Users and Organizations can upload applications to marketplace.*
 
 ### Prepare owner model
@@ -327,7 +330,7 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## About CyberCog
 
-[CyberCog](https://cybercog.su) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
+[CyberCog](https://cybercog.su) is a Social Unity of enthusiasts. Research the best solutions in product & software development is our passion.
 
 - [Follow us on Twitter](https://twitter.com/cybercog)
 - [Read our articles on Medium](https://medium.com/cybercog)
