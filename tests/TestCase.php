@@ -14,6 +14,7 @@ namespace Cog\Tests\Laravel\Ownership;
 use Cog\Laravel\Ownership\Providers\OwnershipServiceProvider;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\Character;
 use Cog\Tests\Laravel\Ownership\Stubs\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -79,7 +80,9 @@ abstract class TestCase extends Orchestra
      */
     private function registerPackageFactories(): void
     {
-        $this->withFactories(__DIR__ . '/database/factories');
+        Factory::guessFactoryNamesUsing(function (string $modelName) {
+            return 'Cog\\Tests\\Laravel\\Ownership\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
+        });
     }
 
     /**

@@ -13,15 +13,12 @@ namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
 use Cog\Contracts\Ownership\Ownable as OwnableContract;
 use Cog\Laravel\Ownership\Traits\HasMorphOwner;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class EntityWithDefaultMorphOwner.
- *
- * @package Cog\Tests\Laravel\Ownership\Stubs\Models
- */
 class EntityWithDefaultMorphOwner extends Model implements OwnableContract
 {
+    use HasFactory;
     use HasMorphOwner;
 
     protected $withDefaultOwnerOnCreate = true;

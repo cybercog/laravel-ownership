@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of Laravel Ownership.
+ * This file is part of Laravel Ban.
  *
  * (c) Anton Komarev <anton@komarev.com>
  *
@@ -9,13 +9,27 @@
  * file that was distributed with this source code.
  */
 
-use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultCustomizedOwner;
-use Faker\Generator;
+declare(strict_types=1);
 
-/* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(EntityWithDefaultCustomizedOwner::class, function (Generator $faker) {
-    return [
-        'name' => $faker->word,
-        'group_id' => null,
-    ];
-});
+namespace Cog\Tests\Laravel\Ownership\Database\Factories;
+
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithDefaultCustomizedOwner;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+final class EntityWithDefaultCustomizedOwnerFactory extends Factory
+{
+    protected $model = EntityWithDefaultCustomizedOwner::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => $this->faker->name(),
+            'group_id' => null,
+        ];
+    }
+}
