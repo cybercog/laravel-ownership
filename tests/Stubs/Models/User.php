@@ -12,15 +12,13 @@
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
 use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-/**
- * Class User.
- *
- * @package Cog\Tests\Laravel\Ownership\Stubs\Models
- */
 class User extends Authenticatable implements CanBeOwnerContract
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of Laravel Ownership.
+ * This file is part of Laravel Ban.
  *
  * (c) Anton Komarev <anton@komarev.com>
  *
@@ -9,14 +9,28 @@
  * file that was distributed with this source code.
  */
 
-use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithMorphOwner;
-use Faker\Generator;
+declare(strict_types=1);
 
-/* @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(EntityWithMorphOwner::class, function (Generator $faker) {
-    return [
-        'name' => $faker->word,
-        'owned_by_id' => null,
-        'owned_by_type' => null,
-    ];
-});
+namespace Cog\Tests\Laravel\Ownership\Database\Factories;
+
+use Cog\Tests\Laravel\Ownership\Stubs\Models\EntityWithMorphOwner;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+final class EntityWithMorphOwnerFactory extends Factory
+{
+    protected $model = EntityWithMorphOwner::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => $this->faker->name(),
+            'owned_by_id' => null,
+            'owned_by_type' => null,
+        ];
+    }
+}

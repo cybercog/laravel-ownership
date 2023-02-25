@@ -29,8 +29,8 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_belong_to_owner()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 
@@ -40,8 +40,8 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_get_owner()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 
@@ -51,9 +51,9 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_change_owner()
     {
-        $group = factory(Group::class)->create();
-        $newUser = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $newUser = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
         $entity->changeOwnerTo($newUser);
@@ -64,8 +64,8 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_abandon_owner()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
         $this->assertInstanceOf(Group::class, $entity->getOwner());
@@ -78,8 +78,8 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_check_if_has_owner()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 
@@ -89,7 +89,7 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_check_if_dont_have_owner()
     {
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => null,
         ]);
 
@@ -99,8 +99,8 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_return_true_from_is_owned_by()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 
@@ -110,11 +110,11 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_return_false_from_is_owned_by()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
-        $notOwnerUser = factory(Group::class)->create();
+        $notOwnerUser = Group::factory()->create();
 
         $this->assertFalse($entity->isOwnedBy($notOwnerUser));
     }
@@ -122,11 +122,11 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_return_true_from_is_not_owned_by()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
-        $notOwner = factory(Group::class)->create();
+        $notOwner = Group::factory()->create();
 
         $this->assertTrue($entity->isNotOwnedBy($notOwner));
     }
@@ -134,8 +134,8 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_return_false_from_is_not_owned_by()
     {
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 
@@ -145,12 +145,12 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_scope_models_by_owner()
     {
-        $group1 = factory(Group::class)->create();
-        factory(EntityWithCustomizedOwner::class, 4)->create([
+        $group1 = Group::factory()->create();
+        EntityWithCustomizedOwner::factory()->count(4)->create([
             'group_id' => $group1->getKey(),
         ]);
-        $group2 = factory(Group::class)->create();
-        factory(EntityWithCustomizedOwner::class, 3)->create([
+        $group2 = Group::factory()->create();
+        EntityWithCustomizedOwner::factory()->count(3)->create([
             'group_id' => $group2->getKey(),
         ]);
 
@@ -160,12 +160,12 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_scope_models_not_owned_by_owner()
     {
-        $group1 = factory(Group::class)->create();
-        factory(EntityWithCustomizedOwner::class, 4)->create([
+        $group1 = Group::factory()->create();
+        EntityWithCustomizedOwner::factory()->count(4)->create([
             'group_id' => $group1->getKey(),
         ]);
-        $group2 = factory(Group::class)->create();
-        factory(EntityWithCustomizedOwner::class, 3)->create([
+        $group2 = Group::factory()->create();
+        EntityWithCustomizedOwner::factory()->count(3)->create([
             'group_id' => $group2->getKey(),
         ]);
 
@@ -175,9 +175,9 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_set_default_owner_on_create()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $this->actingAs($user);
-        $entity = factory(EntityWithDefaultCustomizedOwner::class)->make([
+        $entity = EntityWithDefaultCustomizedOwner::factory()->make([
             'group_id' => null,
         ]);
         $entity->save();
@@ -189,9 +189,9 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_manually_set_default_owner_on_create()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $this->actingAs($user);
-        $entity = factory(EntityWithCustomizedOwner::class)->make([
+        $entity = EntityWithCustomizedOwner::factory()->make([
             'group_id' => null,
         ]);
         $entity->withDefaultOwner()->save();
@@ -203,10 +203,10 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_manually_set_custom_default_owner_on_create()
     {
-        $user = factory(User::class)->create();
-        $group = factory(Group::class)->create();
+        $user = User::factory()->create();
+        $group = Group::factory()->create();
         $this->actingAs($user);
-        $entity = factory(EntityWithCustomizedOwner::class)->make([
+        $entity = EntityWithCustomizedOwner::factory()->make([
             'group_id' => null,
         ]);
         $entity->withDefaultOwner($group)->save();
@@ -218,10 +218,10 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_manually_override_default_owner_on_create()
     {
-        $user = factory(User::class)->create();
-        $group = factory(Group::class)->create();
+        $user = User::factory()->create();
+        $group = Group::factory()->create();
         $this->actingAs($user);
-        $entity = factory(EntityWithDefaultCustomizedOwner::class)->make([
+        $entity = EntityWithDefaultCustomizedOwner::factory()->make([
             'group_id' => null,
         ]);
         $entity->withDefaultOwner($group)->save();
@@ -233,9 +233,9 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_manually_unset_default_owner_on_create()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $this->actingAs($user);
-        $entity = factory(EntityWithDefaultCustomizedOwner::class)->make([
+        $entity = EntityWithDefaultCustomizedOwner::factory()->make([
             'group_id' => null,
         ]);
         $entity->withoutDefaultOwner()->save();
@@ -248,20 +248,20 @@ class HasCustomizedOwnerTest extends TestCase
     {
         $this->expectException(InvalidOwnerType::class);
 
-        $character = factory(User::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create();
+        $character = User::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create();
         $entity->changeOwnerTo($character);
     }
 
     /** @test */
     public function it_can_return_true_on_is_owned_by_default_owner()
     {
-        $user = factory(User::class)->create();
-        $group = factory(Group::class)->create([
+        $user = User::factory()->create();
+        $group = Group::factory()->create([
             'user_id' => $user->getKey(),
         ]);
         $this->actingAs($user);
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 
@@ -273,13 +273,13 @@ class HasCustomizedOwnerTest extends TestCase
     /** @test */
     public function it_can_return_false_on_is_owned_by_default_owner()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $this->actingAs($user);
-        factory(Group::class)->create([
+        Group::factory()->create([
             'user_id' => $user->getKey(),
         ]);
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 
@@ -293,8 +293,8 @@ class HasCustomizedOwnerTest extends TestCase
     {
         $this->expectException(InvalidDefaultOwner::class);
 
-        $group = factory(Group::class)->create();
-        $entity = factory(EntityWithCustomizedOwner::class)->create([
+        $group = Group::factory()->create();
+        $entity = EntityWithCustomizedOwner::factory()->create([
             'group_id' => $group->getKey(),
         ]);
 

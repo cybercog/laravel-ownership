@@ -12,15 +12,13 @@
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
 use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Character.
- *
- * @package Cog\Tests\Laravel\Ownership\Stubs\Models
- */
 class Character extends Model implements CanBeOwnerContract
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

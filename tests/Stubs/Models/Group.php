@@ -12,15 +12,13 @@
 namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
 use Cog\Contracts\Ownership\CanBeOwner as CanBeOwnerContract;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Group.
- *
- * @package Cog\Tests\Laravel\Ownership\Stubs\Models
- */
 class Group extends Model implements CanBeOwnerContract
 {
+    use HasFactory;
+
     /**
      * The primary key for the model.
      *

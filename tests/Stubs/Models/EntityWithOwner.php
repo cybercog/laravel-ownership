@@ -13,15 +13,12 @@ namespace Cog\Tests\Laravel\Ownership\Stubs\Models;
 
 use Cog\Contracts\Ownership\Ownable as OwnableContract;
 use Cog\Laravel\Ownership\Traits\HasOwner;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class EntityWithOwner.
- *
- * @package Cog\Tests\Laravel\Ownership\Stubs\Models
- */
 class EntityWithOwner extends Model implements OwnableContract
 {
+    use HasFactory;
     use HasOwner;
 
     /**
