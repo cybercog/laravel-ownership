@@ -60,7 +60,11 @@ First, pull in the package through Composer.
 composer require cybercog/laravel-ownership
 ```
 
-And then include the service provider within `app/config/app.php`.
+#### Register Package Manually (optional)
+
+If you disabled package auto-discovery you can register it manually.
+
+Include the service provider within `app/config/app.php`.
 
 ```php
 'providers' => [
@@ -119,7 +123,7 @@ Schema::table('articles', function (Blueprint $table) {
 
 #### Overwrite strict ownership owner's foreign key
 
-By default owner model will be the same as `config('auth.providers.users.model')` provides.
+By default, owner model will be the same as `config('auth.providers.users.model')` provides.
 
 To override default owner model in strict ownership, it's primary key or foreign key extend your ownable model with additional attributes:
 
