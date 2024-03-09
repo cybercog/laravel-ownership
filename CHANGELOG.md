@@ -4,6 +4,12 @@ All notable changes to `cybercog/laravel-ownership` will be documented in this f
 
 ## [Unreleased]
 
+## [5.6.0] - 2024-03-09
+
+### Added
+
+- ([#28]) Added Laravel 11 support
+
 ## [5.5.0] - 2023-02-24
 
 ### Added
