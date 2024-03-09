@@ -25,7 +25,7 @@ Make any model as owner and create ownable models in a minutes!
   - [Available methods](#available-methods)
   - [Scopes](#scopes)
   - [Set authenticated user as owner automatically](#set-authenticated-user-as-owner-automatically)
-- [Change log](#change-log)
+- [Changelog](#changelog)
 - [Upgrading](#upgrading)
 - [Contributing](#contributing)
 - [Testing](#testing)
