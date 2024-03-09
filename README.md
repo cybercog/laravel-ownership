@@ -10,7 +10,7 @@
 
 ## Introduction
 
-Laravel Ownership simplify management of eloquent model's owner.
+Laravel Ownership simplify management of Eloquent model's owner.
 Group can be an owner of event, user can be an owner of chat room, organization can own licenses.
 It can be used for many cases not limited by authorship.
 Make any model as owner and create ownable models in a minutes!
