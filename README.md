@@ -1,6 +1,7 @@
 ![cog-laravel-ownership](https://cloud.githubusercontent.com/assets/1849174/21737911/ee344682-d48e-11e6-9ace-eea37026ae6d.png)
 
 <p align="center">
+<a href="https://discord.gg/dzbvW2utyF"><img src="https://img.shields.io/static/v1?logo=discord&label=&message=Discord&color=36393f&style=flat-square" alt="Discord"></a>
 <a href="https://github.com/cybercog/laravel-ownership/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/cybercog/laravel-ownership/tests.yml?style=flat-square" alt="Build"></a>
 <a href="https://styleci.io/repos/76651386"><img src="https://styleci.io/repos/76651386/shield" alt="StyleCI"></a>
 <a href="https://github.com/cybercog/laravel-ownership/releases"><img src="https://img.shields.io/github/release/cybercog/laravel-ownership.svg?style=flat-square" alt="Releases"></a>
