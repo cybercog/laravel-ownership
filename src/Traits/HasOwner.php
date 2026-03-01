@@ -37,7 +37,12 @@ trait HasOwner
      */
     public static function bootHasOwner()
     {
-        static::observe(OwnableObserver::class);
+        // TODO: Remove the else block when minimum Laravel version is 13.
+        if (method_exists(static::class, 'whenBooted')) {
+            static::whenBooted(fn () => static::observe(OwnableObserver::class));
+        } else {
+            static::observe(OwnableObserver::class);
+        }
     }
 
     /**
