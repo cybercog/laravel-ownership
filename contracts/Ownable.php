@@ -55,7 +55,7 @@ interface Ownable
      * @param null|\Cog\Contracts\Ownership\CanBeOwner $owner
      * @return \Cog\Contracts\Ownership\Ownable
      */
-    public function withDefaultOwner(CanBeOwnerContract $owner = null);
+    public function withDefaultOwner(?CanBeOwnerContract $owner = null);
 
     /**
      * Remove default owner for entity.
