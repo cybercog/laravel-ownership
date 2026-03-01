@@ -86,7 +86,7 @@ trait HasOwner
      * @param null|\Cog\Contracts\Ownership\CanBeOwner $owner
      * @return $this
      */
-    public function withDefaultOwner(CanBeOwnerContract $owner = null)
+    public function withDefaultOwner(?CanBeOwnerContract $owner = null)
     {
         $this->defaultOwner = $owner ?: $this->resolveDefaultOwner();
         if (isset($this->withDefaultOwnerOnCreate)) {
